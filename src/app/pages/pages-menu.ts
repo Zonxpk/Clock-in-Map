@@ -38,4 +38,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'shopping-cart-outline',
     link: '/pages/example-nd',
   },
+  {
+    title: 'User',
+    icon: 'shopping-cart-outline',
+    link: '/pages/user',
+  },
 ];
