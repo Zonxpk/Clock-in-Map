@@ -5,6 +5,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ExampleComponent } from './example/example.component';
 import { ExampleNdComponent } from './example-nd/example-nd.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [{
   path: '',
@@ -23,6 +24,15 @@ const routes: Routes = [{
       path: 'example-nd',
       loadChildren: () => import('./example-nd/example-nd.module')
         .then(m => m.ExampleNdModule),
+    },
+    {
+      path: 'user',
+      component: UserComponent,
+    },
+    {
+      path: '',
+      redirectTo: 'user',
+      pathMatch: 'full',
     },
 
     // {

@@ -15,6 +15,7 @@ import {
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { UserModule } from './user/user.module';
 import { ExampleModule } from './example/example.module';
 import { ExampleNdModule } from './example-nd/example-nd.module';
 import { PagesRoutingModule } from './pages-routing.module';
@@ -33,9 +34,8 @@ import { PagesRoutingModule } from './pages-routing.module';
     NbUserModule,
     ThemeModule,
     NbMenuModule,
-    // ExampleModule,
     DashboardModule,
-    // ExampleNdModule,
+    UserModule,
     PagesRoutingModule,
   ],
   declarations: [

@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-lg-12">
+  <nb-card>
+    <nb-card-header>
+        User
+    </nb-card-header>
+    <nb-card-body>
+        <nb-list>
+            <nb-list-item *ngFor="let user of users; index as userId">
+              <nb-user [name]="user.us_username" [title]="user.us_password" >
+              </nb-user>
+            </nb-list-item>
+          </nb-list>
+    </nb-card-body>
+  </nb-card>
+  </div>
+</div>
