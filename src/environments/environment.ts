@@ -10,4 +10,5 @@
 
 export const environment = {
   production: false,
+  db: "http://localhost:3000"
 };
