@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserComponent implements OnInit {
   users : any;
-
+  name : string;
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
@@ -16,9 +16,14 @@ export class UserComponent implements OnInit {
   }
 
   get_all_user(){
-    this.http.get<any>('/api/user/get_all_user').subscribe(result => {
+    var db = environment.db;
+    this.http.get<any>(`${db}/api/user/get_all_user`).subscribe(result => {
       this.users = result;
     });
+  }
+
+  get_name(){
+    this.name = 'test';
   }
 
 }

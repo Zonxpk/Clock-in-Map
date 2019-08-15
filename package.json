@@ -13,11 +13,11 @@
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
     "start": "concurrently \"npm run serve-api\" \"npm run serve\"",
-    "serve": "ng build --watch",
+    "serve": "ng serve",
     "serve-api": "nodemon server.js --watch dist --watch server",
     "build": "ng build",
     "build:prod": "npm run build -- --prod --aot",
-    "test": "ng test",
+    "test": "./node_modules/.bin/mocha",
     "test:coverage": "rimraf coverage && npm run test -- --code-coverage",
     "lint": "ng lint",
     "lint:fix": "ng lint ngx-admin-demo --fix",
@@ -28,8 +28,7 @@
     "docs": "compodoc -p src/tsconfig.app.json -d docs",
     "docs:serve": "compodoc -p src/tsconfig.app.json -d docs -s",
     "prepush": "npm run lint:ci",
-    "release:changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
-    "test": "./node_modules/.bin/mocha"
+    "release:changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s"
   },
   "dependencies": {
     "@agm/core": "^1.0.0-beta.5",
@@ -54,6 +53,7 @@
     "classlist.js": "1.1.20150312",
     "concurrently": "^4.1.1",
     "core-js": "2.5.1",
+    "cors": "^2.8.5",
     "eva-icons": "^1.1.0",
     "express": "^4.17.1",
     "hammerjs": "^2.0.8",

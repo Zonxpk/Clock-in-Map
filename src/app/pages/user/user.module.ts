@@ -4,12 +4,13 @@ import {
   NbListModule,
   NbUserModule,
 } from '@nebular/theme';
-
+import { FormsModule } from '@angular/forms';
 import { ThemeModule } from '../../@theme/theme.module';
 import { UserComponent } from './user.component';
 
 @NgModule({
   imports: [
+    FormsModule,
     NbCardModule,
     NbUserModule,
     NbListModule,   
