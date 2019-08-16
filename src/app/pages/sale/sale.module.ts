@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SaleComponent } from './sale.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ThemeModule } from '../../@theme/theme.module';
+import {FormsModule} from '@angular/forms';
 import {
   NbActionsModule,
   NbButtonModule,
@@ -16,6 +17,7 @@ import {
   NbUserModule,
   NbToastrModule,
 } from '@nebular/theme';
+import { from } from 'rxjs';
 @NgModule({
   imports: [
     CommonModule,
@@ -32,6 +34,7 @@ import {
     NbSelectModule,
     NbUserModule,
     NbToastrModule,
+    FormsModule,
   ],
   declarations: [SaleComponent]
 })
