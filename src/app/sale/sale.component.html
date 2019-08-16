@@ -1,4 +1,3 @@
-<html>
 <head>
   <title></title>
   <!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
@@ -8,228 +7,230 @@
   <link rel="stylesheet" href="assets/product.css" /> -->
   
 </head>
-<body>
-
-  <div class="wrapper">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-12 sidebar-container">
-          <aside class="widget-area">
-           
-            <div class="widget">
-              <h4 class="widget-title">ค้นหาสินค้า</h4>
-              <div class="widget-content">
-                <div class="input-group mb-0">
-                  <input type="text" class="form-control">
-                  <div class="input-group-append">
-                    <button class="btn btn_search_color" type="button">ค้นหา</button>
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card-body>
+      <div class="wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-12 sidebar-container">
+              <aside class="widget-area">
+              
+                <div class="widget">
+                  <h4 class="widget-title">ค้นหาสินค้า</h4>
+                  <div class="widget-content">
+                    <div class="input-group mb-0">
+                      <input type="text" class="form-control">
+                      <div nbInput fieldSize="medium" placeholder="">
+                        <button nbButton primary type="button">ค้นหา</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <div class="widget">
-              <h4 class="widget-title">หมวดหมู่สินค้า</h4>
-              <div class="widget-content widget-nav">
-                <ul class="menu">
-                  <li class="menu-item"><a class="cs-text-link selected" class="cs-text-link selected">ทั้งหมด</a></li>
-                  <li class="menu-item main-accordionIcon">
-                    <a class="cs-text-link">เสื้อ</a>
-                    <ul class="sub-menu">
-                      <li>
-                        <a class="cs-text-link">- ผู้ชาย
-                        </a>
+                <div class="widget">
+                  <h4 class="widget-title">หมวดหมู่สินค้า</h4>
+                  <div class="widget-content widget-nav">
+                    <ul class="menu">
+                      <li class="menu-item"><a class="cs-text-link selected" class="cs-text-link selected">ทั้งหมด</a></li>
+                      <li class="menu-item main-accordionIcon">
+                        <a class="cs-text-link">เสื้อ</a>
                         <ul class="sub-menu">
                           <li>
-                            <a class="cs-text-link">- ผู้หญิง
+                            <a class="cs-text-link">- ผู้ชาย
                             </a>
+                            <ul class="sub-menu">
+                              <li>
+                                <a class="cs-text-link">- ผู้หญิง
+                                </a>
+                              </li>
+                            </ul>
                           </li>
                         </ul>
                       </li>
-                    </ul>
-                  </li>
-                  <li class="menu-item main-accordionIcon">
-                    <a class="cs-text-link">กางเกง</a>
-                    <ul class="sub-menu">
-                      <li>
-                        <a class="cs-text-link">- ผู้ชาย
-                        </a>
+                      <li class="menu-item main-accordionIcon">
+                        <a class="cs-text-link">กางเกง</a>
                         <ul class="sub-menu">
                           <li>
-                            <a class="cs-text-link">- ผู้หญิง
+                            <a class="cs-text-link">- ผู้ชาย
                             </a>
+                            <ul class="sub-menu">
+                              <li>
+                                <a class="cs-text-link">- ผู้หญิง
+                                </a>
+                              </li>
+                            </ul>
                           </li>
                         </ul>
                       </li>
+
                     </ul>
-                  </li>
-
-                </ul>
-              </div>
+                  </div>
+                </div>
+              </aside>
             </div>
-          </aside>
+
+            <div class="col-lg-9">
+              <div class="d-flex align-items-center mb-3">
+                <div class="d-inline-flex d-lg-none">
+                  <div class="filter-trigger">
+                    <i class="fas fa-filter mr-2"></i> <span>ตัวกรอง</span>
+                  </div>
+                </div>
+                <div class="d-inline-flex ml-auto">
+                  <select class="custom-select">
+                    <option value="0">สินค้าจาก ก - ฮ</option>
+                    <option value="1">สินค้าจาก ฮ - ก</option>
+                    <option value="2">สินค้าเก่าสุด</option>
+                    <option value="3" selected>สินค้าล่าสุด</option>
+                    <option value="4">ราคา ต่ำ - สูง</option>
+                    <option value="5">ราคา สูง - ต่ำ</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="product-group row grid">
+                <div class="product-item col-lg-4 col-6">
+                  <div class="product-card">
+                    <div class="product-image horizontal">
+                      <a class="inner">
+                        <img src="https://via.placeholder.com/254/09f/fff.png">
+                      </a>
+                    </div>
+                    <h2 class="product-title">
+                      <a style="font-size: 16px;">Product 01</a>
+                    </h2>
+                    <div class="product-price">
+                      <div>
+                        <div class="price-sell"> 
+                          1,000  <span >บาท</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="product-item col-lg-4 col-6">
+                  <div class="product-card">
+                    <div class="product-image horizontal">
+                      <a class="inner">
+                        <img src="https://via.placeholder.com/254/09f/fff.png">
+                      </a>
+                    </div>
+                    <h2 class="product-title">
+                      <a style="font-size: 16px;">Product 02</a>
+                    </h2>
+                    <div class="product-price">
+                      <div>
+                        <div class="price-sell">
+                          1,000 <span>บาท</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="product-item col-lg-4 col-6">
+                  <div class="product-card">
+                    <div class="product-image horizontal">
+                      <a class="inner">
+                        <img src="https://via.placeholder.com/254/09f/fff.png">
+                      </a>
+                    </div>
+                    <h2 class="product-title">
+                      <a style="font-size: 16px;">Product 03</a>
+                    </h2>
+                    <div class="product-price">
+                      <div>
+                        <div class="price-sell">
+                          1,000 <span>บาท</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="product-item col-lg-4 col-6">
+                  <div class="product-card">
+                    <div class="product-image horizontal">
+                      <a class="inner">
+                        <img src="https://via.placeholder.com/254/09f/fff.png">
+                      </a>
+                    </div>
+                    <h2 class="product-title">
+                      <a style="font-size: 16px;">Product 04</a>
+                    </h2>
+                    <div class="product-price">
+                      <div>
+                        <div class="price-sell">
+                          1,000 <span>บาท</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="product-item col-lg-4 col-6">
+                  <div class="product-card">
+                    <div class="product-image horizontal">
+                      <a class="inner">
+                        <img src="https://via.placeholder.com/254/09f/fff.png">
+                      </a>
+                    </div>
+                    <h2 class="product-title">
+                      <a style="font-size: 16px;">Product 05</a>
+                    </h2>
+                    <div class="product-price">
+                      <div>
+                        <div class="price-sell">
+                          1,000 <span>บาท</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="product-item col-lg-4 col-6">
+                  <div class="product-card">
+                    <div class="product-image horizontal">
+                      <a class="inner">
+                        <img src="https://via.placeholder.com/254/09f/fff.png">
+                      </a>
+                    </div>
+                    <h2 class="product-title">
+                      <a style="font-size: 16px;">Product 06</a>
+                    </h2>
+                    <div class="product-price">
+                      <div>
+                        <div class="price-sell">
+                          1,000 <span>บาท</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="mb-5">
+                <!-- PAGINATION -->
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                  </ul>
+                </nav>
+                
+              </div>
+
+            </div>
+
+          </div>
         </div>
-
-        <div class="col-lg-9">
-          <div class="d-flex align-items-center mb-3">
-            <div class="d-inline-flex d-lg-none">
-              <div class="filter-trigger">
-                <i class="fas fa-filter mr-2"></i> <span>ตัวกรอง</span>
-              </div>
-            </div>
-            <div class="d-inline-flex ml-auto">
-              <select class="custom-select">
-                <option value="0">สินค้าจาก ก - ฮ</option>
-                <option value="1">สินค้าจาก ฮ - ก</option>
-                <option value="2">สินค้าเก่าสุด</option>
-                <option value="3" selected>สินค้าล่าสุด</option>
-                <option value="4">ราคา ต่ำ - สูง</option>
-                <option value="5">ราคา สูง - ต่ำ</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="product-group row grid">
-            <div class="product-item col-lg-4 col-6">
-              <div class="product-card">
-                <div class="product-image horizontal">
-                  <a class="inner">
-                    <img src="https://via.placeholder.com/254/09f/fff.png">
-                  </a>
-                </div>
-                <h2 class="product-title">
-                  <a style="font-size: 16px;">Product 01</a>
-                </h2>
-                <div class="product-price">
-                  <div>
-                    <div class="price-sell"> 
-                      1,000  <span >บาท</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="product-item col-lg-4 col-6">
-              <div class="product-card">
-                <div class="product-image horizontal">
-                  <a class="inner">
-                    <img src="https://via.placeholder.com/254/09f/fff.png">
-                  </a>
-                </div>
-                <h2 class="product-title">
-                  <a style="font-size: 16px;">Product 02</a>
-                </h2>
-                <div class="product-price">
-                  <div>
-                    <div class="price-sell">
-                      1,000 <span>บาท</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="product-item col-lg-4 col-6">
-              <div class="product-card">
-                <div class="product-image horizontal">
-                  <a class="inner">
-                    <img src="https://via.placeholder.com/254/09f/fff.png">
-                  </a>
-                </div>
-                <h2 class="product-title">
-                  <a style="font-size: 16px;">Product 03</a>
-                </h2>
-                <div class="product-price">
-                  <div>
-                    <div class="price-sell">
-                      1,000 <span>บาท</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="product-item col-lg-4 col-6">
-              <div class="product-card">
-                <div class="product-image horizontal">
-                  <a class="inner">
-                    <img src="https://via.placeholder.com/254/09f/fff.png">
-                  </a>
-                </div>
-                <h2 class="product-title">
-                  <a style="font-size: 16px;">Product 04</a>
-                </h2>
-                <div class="product-price">
-                  <div>
-                    <div class="price-sell">
-                      1,000 <span>บาท</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="product-item col-lg-4 col-6">
-              <div class="product-card">
-                <div class="product-image horizontal">
-                  <a class="inner">
-                    <img src="https://via.placeholder.com/254/09f/fff.png">
-                  </a>
-                </div>
-                <h2 class="product-title">
-                  <a style="font-size: 16px;">Product 05</a>
-                </h2>
-                <div class="product-price">
-                  <div>
-                    <div class="price-sell">
-                      1,000 <span>บาท</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="product-item col-lg-4 col-6">
-              <div class="product-card">
-                <div class="product-image horizontal">
-                  <a class="inner">
-                    <img src="https://via.placeholder.com/254/09f/fff.png">
-                  </a>
-                </div>
-                <h2 class="product-title">
-                  <a style="font-size: 16px;">Product 06</a>
-                </h2>
-                <div class="product-price">
-                  <div>
-                    <div class="price-sell">
-                      1,000 <span>บาท</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="mb-5">
-            <!-- PAGINATION -->
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-              </ul>
-            </nav>
-            
-          </div>
-
-        </div>
-
       </div>
-    </div>
-</body>
-
-</html>
+    </nb-card-body>
+</div>
+</div>

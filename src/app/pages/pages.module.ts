@@ -16,9 +16,12 @@ import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { UserModule } from './user/user.module';
+import { SaleModule } from './sale/sale.module';
 import { ExampleModule } from './example/example.module';
 import { ExampleNdModule } from './example-nd/example-nd.module';
 import { PagesRoutingModule } from './pages-routing.module';
+import { SaleComponent } from './sale/sale.component';
+
 
 @NgModule({
   imports: [
@@ -36,6 +39,7 @@ import { PagesRoutingModule } from './pages-routing.module';
     NbMenuModule,
     DashboardModule,
     UserModule,
+    SaleModule,
     PagesRoutingModule,
   ],
   declarations: [
