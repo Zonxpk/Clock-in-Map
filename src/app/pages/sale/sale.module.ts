@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SaleComponent } from './sale.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ThemeModule } from '../@theme/theme.module';
+import { ThemeModule } from '../../@theme/theme.module';
 import {
   NbActionsModule,
   NbButtonModule,
