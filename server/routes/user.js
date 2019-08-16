@@ -14,8 +14,9 @@ router.get('/test', (req, res) => {
 
 router.get('/get_all_user',async (req, res) => {
   let temp = await new User().query((qb)=> {
-    qb.select('us_id','us_username')
+    qb.where('us_username','is not',null)
   }).fetchAll()
+  console.log(temp.toJSON());
   res.json(temp)
 });
 
