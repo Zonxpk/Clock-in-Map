@@ -50,11 +50,6 @@ const routes: Routes = [
     path: 'sale',
     component: SaleComponent,
   },
-  {
-    path: '',
-    redirectTo: 'sale',
-    pathMatch: 'full',
-  },
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
   { path: '**', redirectTo: 'pages' },
 ];
