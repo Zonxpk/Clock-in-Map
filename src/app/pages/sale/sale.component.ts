@@ -16,6 +16,7 @@ export class SaleComponent implements OnInit {
   sort: any = '';
   page: any;
   config: any;
+  count : any = 0;
   per_page: number = 6;
   collection = [];
 
@@ -23,12 +24,15 @@ export class SaleComponent implements OnInit {
 
   ngOnInit() {
 
-    this.get_all();
+    this.get_count().then(value => {
+      console.log('get counted',value);
+      this.count = value;
+      this.get_all();
+    });
 
     this.config = {
       currentPage: 1,
       itemsPerPage: this.per_page,
-      maxSize: 5,
     };
 
     this.route.queryParamMap
@@ -45,11 +49,22 @@ export class SaleComponent implements OnInit {
     this.get_test();
   }
 
+  get_count():any {
+    return new Promise(resolve => {
+    this.data = {cate_id: '', perpage:0 ,page: '', search:'', sort: this.sort };
+    this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
+      resolve(result.count);
+    })
+  });
+
+  }
+
   get_all(cate_id = '', page = '' , search = '') {
-    this.data = {cate_id: cate_id, page: page, search: search, sort: this.sort };
+    console.log('Z',this.count);
+    this.data = {cate_id: cate_id, perpage:this.count ,page: page, search: search, sort: this.sort };
     this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
       this.da = result.data;
-      // console.log(result);
+      console.log(result);
     });
   }
   search(data) {
@@ -69,6 +84,7 @@ export class SaleComponent implements OnInit {
   }
 
   pageChange(newPage: number) {
-		this.router.navigate(['./'], { queryParams: { page: newPage } });
+    // alert(this.router.url);
+		this.router.navigate(['/pages/sale'], { queryParams: { page: newPage } });
 	}
 }
