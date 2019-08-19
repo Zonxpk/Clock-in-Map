@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class SaleComponent implements OnInit , OnDestroy  {
   da: any;
-  product: any;
+  product: any = '';
   data: any;
   sort: any = '';
   page: any;
@@ -76,6 +76,8 @@ export class SaleComponent implements OnInit , OnDestroy  {
 
   update(){
     // this.get_all();
+    localStorage.setItem('name', this.product);
+
     localStorage.setItem('filter', this.sort);
     this.get_all();
   }
@@ -99,34 +101,16 @@ export class SaleComponent implements OnInit , OnDestroy  {
 
   }
 
-  get_all(cate_id = '', page = '' , search = '') {
-    console.log('Z',this.count);
-    this.data = {cate_id: cate_id, perpage:this.count ,page: page, search: search, sort: this.sort };
-    this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
-      this.da = result.data;
-      console.log(result);
-    });
-  }
-  search(data) {
-    this.data = {cate_id: '', page: '1', search: data, sort: this.sort };
-    this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
-      this.da = result.data;
-      // console.log(result);
-    });
-  }
-
-
   pageChange(newPage: number) {
     // alert(this.router.url);
     console.log('after cate_id',this.cate_id);
     if(this.cate_id != null){
       // console.log('cate is not null');
-      this.router.navigate(['/pages/sale',this.cate_id], { queryParams: { page: newPage }, skipLocationChange: true });
+      this.router.navigate(['/pages/sale',this.cate_id], { queryParams: { page: newPage }, skipLocationChange: false });
       // this.router.navigate(['/pages/sale',this.cate_id]);
     }else{
       // console.log('cate is null');
-      this.router.navigate(['/pages/sale'], { queryParams: { page: newPage }, skipLocationChange: true });
+      this.router.navigate(['/pages/sale'], { queryParams: { page: newPage }, skipLocationChange: false });
     }
 	}
-
 }

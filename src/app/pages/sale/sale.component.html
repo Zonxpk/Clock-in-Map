@@ -23,7 +23,7 @@
                       <div class="input-group mb-0">
                         <input nbInput type="text" class="form-control">
                         <div class="input-group-append">
-                          <button nbButton primary class="btn btn_search_color" type="button">ค้นหา</button>
+                          <button nbButton primary class="btn btn_search_color" type="button" (click)='update()'>ค้นหา</button>
                         </div>
                       </div>
                     </div>
@@ -32,7 +32,7 @@
                     <h4 class="widget-title">หมวดหมู่สินค้า</h4>
                     <div class="widget-content widget-nav">
                       <ul class="menu">
-                        <li class="menu-item"><a class="cs-text-link selected" class="cs-text-link selected">ทั้งหมด</a></li>
+                        <li class="menu-item"><a class="cs-text-link selected" class="cs-text-link selected" [routerLink]="['/pages/sale']">ทั้งหมด</a></li>
                         <li class="menu-item main-accordionIcon">
                             <a class="cs-text-link" >เสื้อ</a>
                           <ul class="sub-menu">
