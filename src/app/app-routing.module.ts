@@ -8,7 +8,6 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
-import { SaleComponent } from './sale/sale.component';
 
 const routes: Routes = [
   {
@@ -45,10 +44,6 @@ const routes: Routes = [
         component: NbResetPasswordComponent,
       },
     ],
-  },
-  {
-    path: 'sale',
-    component: SaleComponent,
   },
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
   { path: '**', redirectTo: 'pages' },

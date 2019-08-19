@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-sale',
@@ -13,23 +16,26 @@ export class SaleComponent implements OnInit {
   sort: any = '';
   page: any;
   config: any;
+  per_page: number = 6;
   collection = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
 
+    this.get_all();
+
     this.config = {
       currentPage: 1,
-      itemsPerPage: 6,
+      itemsPerPage: this.per_page,
       maxSize: 5,
     };
 
-    for (let i = 1; i <= 100; i++) {
-      this.collection.push(`item ${i}`);
-    }
+    this.route.queryParamMap
+    .map(params => params.get('page'))
+    .subscribe(page => this.config.currentPage = page);
 
-    this.get_all();
+
 
 
   }
@@ -40,14 +46,14 @@ export class SaleComponent implements OnInit {
   }
 
   get_all(cate_id = '', page = '' , search = '') {
-    this.data = {cate_id: cate_id, page: page, perpage: '6', search: search, sort: this.sort };
+    this.data = {cate_id: cate_id, page: page, search: search, sort: this.sort };
     this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
       this.da = result.data;
       // console.log(result);
     });
   }
   search(data) {
-    this.data = {cate_id: '', page: '1', perpage: '6', search: data, sort: this.sort };
+    this.data = {cate_id: '', page: '1', search: data, sort: this.sort };
     this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
       this.da = result.data;
       // console.log(result);
@@ -62,4 +68,7 @@ export class SaleComponent implements OnInit {
     console.log(temp);
   }
 
+  pageChange(newPage: number) {
+		this.router.navigate(['./'], { queryParams: { page: newPage } });
+	}
 }
