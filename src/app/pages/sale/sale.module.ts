@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { SaleComponent } from './sale.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ThemeModule } from '../../@theme/theme.module';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
 import {
   NbActionsModule,
   NbButtonModule,
@@ -20,6 +22,7 @@ import {
 import { from } from 'rxjs';
 @NgModule({
   imports: [
+    RouterModule,
     CommonModule,
     ReactiveFormsModule,
     ThemeModule,
@@ -35,6 +38,7 @@ import { from } from 'rxjs';
     NbUserModule,
     NbToastrModule,
     FormsModule,
+    NgxPaginationModule,
   ],
   declarations: [SaleComponent]
 })
