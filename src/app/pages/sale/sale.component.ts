@@ -10,14 +10,20 @@ export class SaleComponent implements OnInit {
   da: any;
   product: any;
   data: any;
-  sort: any = '';
+  sort: any = 3;
   page: any;
   config: any;
   collection = [];
-
+  token: any;
+  name: any;
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      localStorage.clear();
+      localStorage.setItem('filter', '3');
+    }, 300000); // 5 min
+    // }, 5000);
 
     this.config = {
       currentPage: 1,
@@ -30,24 +36,28 @@ export class SaleComponent implements OnInit {
     }
 
     this.get_all();
-
+    localStorage.setItem('filter', this.sort);
 
   }
 
   update(){
     // this.get_all();
-    this.get_test();
+    localStorage.setItem('filter', this.sort);
+    this.get_all();
   }
 
-  get_all(cate_id = '', page = '' , search = '') {
-    this.data = {cate_id: cate_id, page: page, perpage: '6', search: search, sort: this.sort };
+  get_all(cate_id = '', page = '') {
+    this.sort = localStorage.getItem('filter');
+    this.product = localStorage.getItem('name');
+    this.data = {cate_id: cate_id, page: page, perpage: '6', search: this.product, sort: this.sort };
     this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
       this.da = result.data;
       // console.log(result);
     });
   }
-  search(data) {
-    this.data = {cate_id: '', page: '1', perpage: '6', search: data, sort: this.sort };
+  search() {
+    localStorage.setItem('name', this.product);
+    this.data = {cate_id: '', page: '1', perpage: '6', search: this.product, sort: this.sort };
     this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
       this.da = result.data;
       // console.log(result);
