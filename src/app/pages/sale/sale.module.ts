@@ -19,7 +19,6 @@ import {
   NbUserModule,
   NbToastrModule,
 } from '@nebular/theme';
-import { from } from 'rxjs';
 @NgModule({
   imports: [
     RouterModule,
