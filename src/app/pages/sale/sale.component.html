@@ -91,20 +91,20 @@
                 </div>
         
                 <div class="product-group row grid">
-                  <div class="product-item col-lg-4 col-6" *ngFor="let value of da">
+                  <div class="product-item col-lg-4 col-6" ngDefaultControl  *ngFor="let item of da | paginate: config">
                     <div class="product-card">
                       <div class="product-image horizontal">
                         <a class="inner">
-                          <img src="{{value.image}}">
+                          <img src="{{item.image}}">
                         </a>
                       </div>
                       <h2 class="product-title">
-                        <a style="font-size: 16px;">{{value.name}}</a>
+                        <a style="font-size: 16px;">{{item.name}}</a>
                       </h2>
                       <div class="product-price">
                         <div>
                           <div class="price-sell"> 
-                              {{value.price}}  <span >บาท</span>
+                              {{item.price}}  <span >บาท</span>
                           </div>
                         </div>
                       </div>
@@ -117,8 +117,7 @@
                   <!-- PAGINATION -->
                   <nav aria-label="Page navigation example">
                   <!-- <nav aria-label="Page navigation example" [(ngModel)]="page"  (ngModelChange)="update($event)"> -->
-              
-                    <pagination-controls [(ngModel)]="page" (pageChange)="update($event)" class="pagination"></pagination-controls>
+                    <pagination-controls (pageChange)="pageChange($event)" class="pagination"></pagination-controls>
                   </nav>
                   
                 </div>
