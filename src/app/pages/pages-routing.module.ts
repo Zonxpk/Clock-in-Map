@@ -44,7 +44,10 @@ const routes: Routes = [{
       redirectTo: 'sale',
       pathMatch: 'full',
     },
-
+    {
+      path: 'sale/:categoryId',
+      component: SaleComponent,
+    },
     // {
     //   path: 'example-nd',
     //   loadChildren: () => import('./example-nd/example-nd.module')
