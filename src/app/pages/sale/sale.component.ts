@@ -46,7 +46,6 @@ export class SaleComponent implements OnInit {
 
   update(){
     // this.get_all();
-    this.get_test();
   }
 
   get_count():any {
@@ -75,13 +74,6 @@ export class SaleComponent implements OnInit {
     });
   }
 
-  get_test(){
-    const temp =  {
-      sort:this.sort,
-      page:this.page
-    }
-    console.log(temp);
-  }
 
   pageChange(newPage: number) {
     // alert(this.router.url);
