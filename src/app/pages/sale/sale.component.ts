@@ -13,21 +13,29 @@ export class SaleComponent implements OnInit {
   da: any;
   product: any;
   data: any;
-  sort: any = '';
+  sort: any = 3;
   page: any;
   config: any;
   count : any = 0;
   per_page: number = 6;
   collection = [];
+  token: any;
+  name: any;
 
   constructor(private http: HttpClient,private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      localStorage.clear();
+      localStorage.setItem('filter', '3');
+    }, 300000); // 5 min
+    // }, 5000);
 
     this.get_count().then(value => {
       console.log('get counted',value);
       this.count = value;
       this.get_all();
+          localStorage.setItem('filter', this.sort);
     });
 
     this.config = {
@@ -40,12 +48,22 @@ export class SaleComponent implements OnInit {
     .subscribe(page => this.config.currentPage = page);
 
 
-
-
   }
 
   update(){
     // this.get_all();
+    localStorage.setItem('filter', this.sort);
+    this.get_all();
+  }
+
+  get_all(cate_id = '', page = '') {
+    this.sort = localStorage.getItem('filter');
+    this.product = localStorage.getItem('name');
+    this.data = {cate_id: cate_id, page: page, perpage:this.count, search: this.product, sort: this.sort };
+    this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
+      this.da = result.data;
+      console.log(result);
+    });
   }
 
   get_count():any {
@@ -58,16 +76,9 @@ export class SaleComponent implements OnInit {
 
   }
 
-  get_all(cate_id = '', page = '' , search = '') {
-    console.log('Z',this.count);
-    this.data = {cate_id: cate_id, perpage:this.count ,page: page, search: search, sort: this.sort };
-    this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
-      this.da = result.data;
-      console.log(result);
-    });
-  }
-  search(data) {
-    this.data = {cate_id: '', page: '1', search: data, sort: this.sort };
+  search() {
+    localStorage.setItem('name', this.product);
+    this.data = {cate_id: '', page: '1', perpage: '6', search: this.product, sort: this.sort };
     this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
       this.da = result.data;
       // console.log(result);

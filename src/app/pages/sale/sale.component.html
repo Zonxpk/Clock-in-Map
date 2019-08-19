@@ -21,9 +21,9 @@
                     <h4 class="widget-title">ค้นหาสินค้า</h4>
                     <div class="widget-content">
                       <div class="input-group mb-0">
-                        <input nbInput type="text" class="form-control">
+                        <input nbInput type="text" class="form-control" [(ngModel)]='product'>
                         <div class="input-group-append">
-                          <button nbButton primary class="btn btn_search_color" type="button">ค้นหา</button>
+                          <button nbButton primary class="btn btn_search_color" type="button" (click)='search()'>ค้นหา</button>
                         </div>
                       </div>
                     </div>
@@ -79,7 +79,6 @@
                     </div>
                   </div>
                   <div class="d-inline-flex ml-auto">
-                    {{sort}}
                     <select class="custom-select"   [(ngModel)]="sort"  (ngModelChange)="update($event)">
                       <option value="0">สินค้าจาก ก - ฮ</option>
                       <option value="1">สินค้าจาก ฮ - ก</option>
