@@ -24,6 +24,7 @@ export class SaleComponent implements OnInit , OnDestroy  {
   token: any;
   name: any;
   sub: any;
+  cat: any;
   // categorySuSubscription: Subscription;
 
 
@@ -34,6 +35,7 @@ export class SaleComponent implements OnInit , OnDestroy  {
     setTimeout(() => {
       localStorage.clear();
       localStorage.setItem('filter', '3');
+      localStorage.setItem('name', '');
     }, 300000); // 5 min
 
     this.route.paramMap.subscribe(params => {
@@ -62,8 +64,10 @@ export class SaleComponent implements OnInit , OnDestroy  {
     // });
     
     this.get_all().then( res =>{
+        localStorage.setItem('name', this.product);
         localStorage.setItem('filter', this.sort);
         this.config = { currentPage: 1,itemsPerPage: this.per_page,totalItems:this.count, };
+        this.get_all_cat();
     });
 
 
@@ -86,6 +90,7 @@ export class SaleComponent implements OnInit , OnDestroy  {
     this.get_all().then(res => {
         (this.page == null)?this.page = 1:this.page = this.page;
         this.config = { currentPage: this.page ,itemsPerPage: this.per_page,totalItems:this.count, };
+        localStorage.removeItem('name');
     });
   }
 
@@ -143,5 +148,12 @@ export class SaleComponent implements OnInit , OnDestroy  {
       // console.log('cate is null');
       this.router.navigate(['/pages/sale'], { queryParams: { page: newPage }, skipLocationChange: false });
     }
-	}
+  }
+  get_all_cat() {
+    this.http.get<any>('http://192.168.1.155:3000/product/category').subscribe(result => {
+      this.cat = result;
+      // console.log(result);
+    });
+  }
+  
 }
