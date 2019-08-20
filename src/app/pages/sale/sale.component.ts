@@ -24,6 +24,7 @@ export class SaleComponent implements OnInit , OnDestroy  {
   token: any;
   name: any;
   sub: any;
+  cat: any;
   // categorySuSubscription: Subscription;
 
 
@@ -33,6 +34,7 @@ export class SaleComponent implements OnInit , OnDestroy  {
     setTimeout(() => {
       localStorage.clear();
       localStorage.setItem('filter', '3');
+      localStorage.setItem('name', '');
     }, 300000); // 5 min
 
     this.route.paramMap.subscribe(params => {
@@ -42,6 +44,7 @@ export class SaleComponent implements OnInit , OnDestroy  {
 
     });
 
+    
 
     // this.sub = this.route.params
     // .subscribe(params => {
@@ -56,7 +59,9 @@ export class SaleComponent implements OnInit , OnDestroy  {
     this.get_count().then(value => {
       this.count = value;
       this.get_all();
-          localStorage.setItem('filter', this.sort);
+      this.get_all_cat();
+      localStorage.setItem('name', this.product);
+      localStorage.setItem('filter', this.sort);
     });
 
     this.config = {
@@ -78,7 +83,6 @@ export class SaleComponent implements OnInit , OnDestroy  {
   update(){
     // this.get_all();
     localStorage.setItem('name', this.product);
-
     localStorage.setItem('filter', this.sort);
     this.get_all();
   }
@@ -89,6 +93,7 @@ export class SaleComponent implements OnInit , OnDestroy  {
     this.data = {cate_id: this.cate_id, page: page, perpage:this.count, search: this.product, sort: this.sort };
     this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
       this.da = result.data;
+      localStorage.removeItem('name');
     });
   }
 
@@ -113,5 +118,12 @@ export class SaleComponent implements OnInit , OnDestroy  {
       // console.log('cate is null');
       this.router.navigate(['/pages/sale'], { queryParams: { page: newPage }, skipLocationChange: false });
     }
-	}
+  }
+  get_all_cat() {
+    this.http.get<any>('http://192.168.1.155:3000/product/category').subscribe(result => {
+      this.cat = result;
+      // console.log(result);
+    });
+  }
+  
 }
