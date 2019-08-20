@@ -16,10 +16,11 @@ export class SaleComponent implements OnInit , OnDestroy  {
   data: any;
   sort: any = 3;
   cate_id : any;
+  cate_name : any;
   config: any;
   count : any = 0;
   per_page: number = 6;
-  page: any = 1;
+  page: any;
   collection = [];
   token: any;
   name: any;
@@ -39,13 +40,35 @@ export class SaleComponent implements OnInit , OnDestroy  {
     }, 300000); // 5 min
 
     this.route.paramMap.subscribe(params => {
+      console.log('param',params);
       this.cate_id = [params.get('categoryId')][0];
-      this.page = 1;
+      this.cate_name = [params.get('categoryName')][0];
       this.update();
-
+      this.page = this.route.snapshot.queryParams['page'];
+      console.log('page',this.route.snapshot.queryParams['page']);
+      this.config.currentPage = this.page;
     });
 
     this.config = { currentPage: this.page ,itemsPerPage: this.per_page , totalItems:this.count, };
+
+    this.get_all().then( res =>{
+        localStorage.setItem('name', this.product);
+        localStorage.setItem('filter', this.sort);
+        this.config.totalItems = this.count;
+        this.get_all_cat();
+    });
+
+
+    // this.route.queryParamMap
+    // .map(params => {
+    //   params.get('page')
+    // })
+    // .subscribe(page => {
+    //   console.log('page',page)
+    //   this.config.currentPage = this.page 
+    // });
+    
+
 
     // this.sub = this.route.params
     // .subscribe(params => {
@@ -63,19 +86,8 @@ export class SaleComponent implements OnInit , OnDestroy  {
     //       localStorage.setItem('filter', this.sort);
     // });
     
-    this.get_all().then( res =>{
-        localStorage.setItem('name', this.product);
-        localStorage.setItem('filter', this.sort);
-        this.config = { currentPage: 1,itemsPerPage: this.per_page,totalItems:this.count, };
-        this.get_all_cat();
-    });
 
 
-    // this.route.queryParamMap
-    // .map(params => params.get('page'))
-    // .subscribe(page => this.config.currentPage = page );
-    
-    // ERROR : currentPage = undefined
 
   }
 
@@ -86,16 +98,17 @@ export class SaleComponent implements OnInit , OnDestroy  {
   update(){
     localStorage.setItem('name', this.product);
     localStorage.setItem('filter', this.sort);
-    localStorage.setItem('page', this.page);
     this.get_all().then(res => {
-        (this.page == null)?this.page = 1:this.page = this.page;
+        this.check_page();
         this.config = { currentPage: this.page ,itemsPerPage: this.per_page,totalItems:this.count, };
         localStorage.removeItem('name');
     });
   }
 
-  test(){
-
+  check_page(){
+    console.log('page before',this.page);
+    (this.page == null)?this.page = 1:this.page = this.page;
+    console.log('page after',this.page);
   }
   // get_all() {
   //   this.product = localStorage.getItem('name');
@@ -110,7 +123,6 @@ export class SaleComponent implements OnInit , OnDestroy  {
   get_all() : any{
     this.product = localStorage.getItem('name');
     this.sort = localStorage.getItem('filter');
-    this.page = localStorage.getItem('page');
   
     let promise = new Promise ((resolve,reject) => {
         this.data = {cate_id: this.cate_id, page: this.page, perpage:this.per_page, search: this.product, sort: this.sort };
@@ -126,15 +138,6 @@ export class SaleComponent implements OnInit , OnDestroy  {
     return promise;
   }
 
-  get_count():any {
-    return new Promise(resolve => {
-    this.data = {cate_id: this.cate_id , perpage:0 ,page: '', search:'', sort: '' };
-    this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
-      resolve(result.count);
-    })
-  });
-
-  }
 
   pageChange(newPage: number) {
     this.page = newPage;
@@ -142,7 +145,7 @@ export class SaleComponent implements OnInit , OnDestroy  {
     console.log('after cate_id',this.cate_id);
     if(this.cate_id != null){
       // console.log('cate is not null');
-      this.router.navigate(['/pages/sale',this.cate_id], { queryParams: { page: newPage }, skipLocationChange: false });
+      this.router.navigate(['/pages/sale',this.cate_id,this.cate_name], { queryParams: { page: newPage }, skipLocationChange: false });
       // this.router.navigate(['/pages/sale',this.cate_id]);
     }else{
       // console.log('cate is null');
