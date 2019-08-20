@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router,ParamMap  } from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sale',
@@ -25,34 +26,29 @@ export class SaleComponent implements OnInit , OnDestroy  {
   name: any;
   sub: any;
   cat: any;
-  // categorySuSubscription: Subscription;
+  tempSub : Subscription;
 
 
   constructor(private http: HttpClient,private route: ActivatedRoute, private router: Router) { 
-  }
+    this.get_all_cat();
 
-  ngOnInit() {
-
-    this.route.paramMap.subscribe(params => {
+    route.paramMap.subscribe(params => {
       this.cate_id = [params.get('categoryId')][0];
       this.cate_name = [params.get('categoryName')][0];
       this.page = this.route.snapshot.queryParams['page'];
       this.sort = this.route.snapshot.queryParams['sort'];
       this.product = this.route.snapshot.queryParams['product'];
-      this.config.currentPage = this.page;
       this.check_param();
-      this.get_all();
+      this.get_all_product();
     });
+  }
 
+  ngOnInit() {
     this.config = { currentPage: this.page , itemsPerPage: this.per_page , totalItems: this.count };
-    this.get_all_product();
-
-
-
+    
   }
 
   ngOnDestroy() {
-  //   this.sub.unsubscribe()
   }
 
 
@@ -69,9 +65,7 @@ export class SaleComponent implements OnInit , OnDestroy  {
       this.router.navigate(['/pages/sale'], 
       { queryParams: { page: this.page, sort: this.sort, product: this.product }, skipLocationChange: false });
     }
-    this.get_all().then(res => {
-        this.config = { currentPage: this.page , itemsPerPage: this.per_page, totalItems: this.count };
-    });
+    this.get_all_product();
   }
 
   check_param(){
@@ -86,46 +80,37 @@ export class SaleComponent implements OnInit , OnDestroy  {
   get_all() : any{
     let promise = new Promise ((resolve,reject) => {
         this.data = {cate_id: this.cate_id, page: this.page, perpage:this.per_page, search: this.product, sort: this.sort };
-        this.http.post<any>('http://192.168.1.155:3000/product/search', this.data)
-        .toPromise()
-        .then(result => {
-            this.da = result.data;
-            this.count = result.count;
-            console.log('result',this.da);
-            resolve();
-      });
+        this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
+          console.log('result',result);
+          resolve(result);
+        });
     });
     return promise;
   }
 
   get_all_product(){
     this.get_all().then( res =>{
-      localStorage.setItem('name', this.product);
-      // localStorage.setItem('filter', this.sort);
+      this.da = res.data;
+      this.count = res.count;
       this.config.totalItems = this.count;
-      this.check_param();
-      this.get_all_cat();
   });
   }
 
   pageChange(newPage: number) {
     this.page = newPage;
+    this.config.currentPage = this.page;
     this.update();
-    console.log('after cate_id',this.cate_id);
+    console.log('after:pageChange',this.cate_id);
   }
 
   categoryChange(){
-    this.route.paramMap.subscribe(params => {
+    this.tempSub = this.route.paramMap.subscribe(params => {
       this.cate_id = [params.get('categoryId')][0];
       this.cate_name = [params.get('categoryName')][0];
-      this.page = this.route.snapshot.queryParams['page'];
-      this.sort = this.route.snapshot.queryParams['sort'];
-      this.product = this.route.snapshot.queryParams['product'];
-      this.config.currentPage = this.page;
       this.check_param();
-      
+      this.config.currentPage = this.page;
       this.get_all_product();
-      console.log('after cate_id',this.cate_id);
+      console.log('after:cateChange',this.cate_id);
 
     });
   }
