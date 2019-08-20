@@ -45,7 +45,7 @@ const routes: Routes = [{
       pathMatch: 'full',
     },
     {
-      path: 'sale/:categoryId',
+      path: 'sale/:categoryId/:categoryName',
       component: SaleComponent,
     },
     // {
