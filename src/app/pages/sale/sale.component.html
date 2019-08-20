@@ -21,7 +21,7 @@
                     <h4 class="widget-title">ค้นหาสินค้า</h4>
                     <div class="widget-content">
                       <div class="input-group mb-0">
-                        <input nbInput type="text" class="form-control" [(ngModel)]='product'>
+                        <input nbInput type="text" class="form-control" [(ngModel)]='product' (keyup)="update()">
                         <div class="input-group-append">
                           <button nbButton primary class="btn btn_search_color" type="button" (click)='update()'>ค้นหา</button>
                         </div>
