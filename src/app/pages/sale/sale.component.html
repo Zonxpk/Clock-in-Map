@@ -77,38 +77,39 @@
                     </div>
                   </div>
                   <div class="d-inline-flex ml-auto">
-                    <select class="custom-select"   [(ngModel)]="sort"  (ngModelChange)="update($event)">
-                      <option value="0">สินค้าจาก ก - ฮ</option>
-                      <option value="1">สินค้าจาก ฮ - ก</option>
-                      <option value="2">สินค้าเก่าสุด</option>
-                      <option value="3" selected>สินค้าล่าสุด</option>
-                      <option value="4">ราคา ต่ำ - สูง</option>
-                      <option value="5">ราคา สูง - ต่ำ</option>
+                    <select class="custom-select"  [(ngModel)]="sort"  (ngModelChange)="update($event)">
+                      <option [value]="0">สินค้าจาก ก - ฮ</option>
+                      <option [value]="1">สินค้าจาก ฮ - ก</option>
+                      <option [value]="2">สินค้าเก่าสุด</option>
+                      <option [value]="3" selected>สินค้าล่าสุด</option>
+                      <option [value]="4">ราคา ต่ำ - สูง</option>
+                      <option [value]="5">ราคา สูง - ต่ำ</option>
                     </select>
                   </div>
                 </div>
         
                 <div class="product-group row grid">
                   <div class="product-item col-lg-4 col-6" ngDefaultControl  *ngFor="let item of da | paginate: config">
-                    <div class="product-card">
-                      <div class="product-image horizontal">
-                        <a class="inner">
-                          <img src="{{item.image}}">
-                        </a>
-                      </div>
-                      <h2 class="product-title">
-                        <a style="font-size: 16px;">{{item.name}}</a>
-                      </h2>
-                      <div class="product-price">
-                        <div>
-                          <div class="price-sell"> 
-                              {{item.price}}  <span >บาท</span>
+                    <ng-container *ngIf="item">
+                      <div class="product-card">
+                        <div class="product-image horizontal">
+                          <a class="inner">
+                            <img src="{{item?.image}}">
+                          </a>
+                        </div>
+                        <h2 class="product-title">
+                          <a style="font-size: 16px;">{{item?.name}}</a>
+                        </h2>
+                        <div class="product-price">
+                          <div>
+                            <div class="price-sell"> 
+                                {{item?.price}}  <span >บาท</span>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </ng-container>
                   </div>
-        
                 </div>
         
                 <div class="mb-5">
