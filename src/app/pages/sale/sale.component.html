@@ -21,9 +21,9 @@
                     <h4 class="widget-title">ค้นหาสินค้า</h4>
                     <div class="widget-content">
                       <div class="input-group mb-0">
-                        <input nbInput type="text" class="form-control" [(ngModel)]='product' (keyup)="update()">
+                        <input nbInput type="text" class="form-control" [(ngModel)]='product'>
                         <div class="input-group-append">
-                          <button nbButton primary class="btn btn_search_color" type="button" (keyup)='update()'>ค้นหา</button>
+                          <button nbButton primary class="btn btn_search_color" type="button" (click)='update()'>ค้นหา</button>
                         </div>
                       </div>
                     </div>
@@ -34,11 +34,11 @@
                       <ul class="menu">
                         <li class="menu-item"><a class="cs-text-link selected" class="cs-text-link selected" [routerLink]="['/pages/sale']">ทั้งหมด</a></li>
                         <li class="menu-item main-accordionIcon" *ngFor='let cate of cat'>
-                            <a class="cs-text-link" [routerLink]="['/pages/sale', cate.id,cate.name]">{{cate.name}}</a>
+                            <a class="cs-text-link" [routerLink]="['/pages/sale', cate.id,cate.name]" (click)="categoryChange()">{{cate.name}}</a>
                             <ul class ="sub-menu" *ngFor='let sub of cate.childrens'> 
-                              <a class="cs-text-link" [routerLink]="['/pages/sale', sub.id,sub.name]">- {{sub.name}} </a>
+                              <a class="cs-text-link" [routerLink]="['/pages/sale', sub.id,sub.name]" (click)="categoryChange()">- {{sub.name}} </a>
                               <ul class ="sub-menu" *ngFor='let sub2 of sub.childrens'>
-                                <a class="cs-text-link" [routerLink]="['/pages/sale', sub2.id,sub2.name]">- {{sub2.name}} </a>
+                                <a class="cs-text-link" [routerLink]="['/pages/sale', sub2.id,sub2.name]" (click)="categoryChange()">- {{sub2.name}} </a>
                               </ul>
                             </ul>
                         </li>
@@ -57,7 +57,7 @@
                     </div>
                   </div>
                   <div class="d-inline-flex ml-auto">
-                    <select class="custom-select"  [(ngModel)]="sort"  (ngModelChange)="update($event)">
+                    <select class="custom-select"  [(ngModel)]="sort"  (ngModelChange)="update()">
                       <option [value]="0">สินค้าจาก ก - ฮ</option>
                       <option [value]="1">สินค้าจาก ฮ - ก</option>
                       <option [value]="2">สินค้าเก่าสุด</option>

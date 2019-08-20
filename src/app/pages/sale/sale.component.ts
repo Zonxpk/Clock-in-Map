@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router,ParamMap  } from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sale',
@@ -33,59 +32,20 @@ export class SaleComponent implements OnInit , OnDestroy  {
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      localStorage.clear();
-      localStorage.setItem('filter', '3');
-      localStorage.setItem('name', '');
-    }, 300000); // 5 min
 
     this.route.paramMap.subscribe(params => {
-      console.log('param',params);
       this.cate_id = [params.get('categoryId')][0];
       this.cate_name = [params.get('categoryName')][0];
-      this.update();
       this.page = this.route.snapshot.queryParams['page'];
-      console.log('page',this.route.snapshot.queryParams['page']);
+      this.sort = this.route.snapshot.queryParams['sort'];
+      this.product = this.route.snapshot.queryParams['product'];
       this.config.currentPage = this.page;
+      this.check_param();
+      this.get_all();
     });
 
-    this.config = { currentPage: this.page ,itemsPerPage: this.per_page , totalItems:this.count, };
-
-    this.get_all().then( res =>{
-        localStorage.setItem('name', this.product);
-        localStorage.setItem('filter', this.sort);
-        this.config.totalItems = this.count;
-        this.get_all_cat();
-    });
-
-
-    // this.route.queryParamMap
-    // .map(params => {
-    //   params.get('page')
-    // })
-    // .subscribe(page => {
-    //   console.log('page',page)
-    //   this.config.currentPage = this.page 
-    // });
-    
-
-
-    // this.sub = this.route.params
-    // .subscribe(params => {
-    //    // get id from params
-    //    let categoryId = +params['categoryId'];
-    //     this.cate_id = categoryId;
-    //     console.log('cate_id',this.cate_id);
-    //     this.get_all();
-    //    // do whatever you want with id here
-    //  });
-   
-    // this.get_count().then(value => {
-    //   this.count = value;
-    //   this.get_all();
-    //       localStorage.setItem('filter', this.sort);
-    // });
-    
+    this.config = { currentPage: this.page , itemsPerPage: this.per_page , totalItems: this.count };
+    this.get_all_product();
 
 
 
@@ -95,35 +55,35 @@ export class SaleComponent implements OnInit , OnDestroy  {
   //   this.sub.unsubscribe()
   }
 
+
   update(){
-    localStorage.setItem('name', this.product);
-    localStorage.setItem('filter', this.sort);
+    this.check_param();
+    if (this.cate_id != null) {
+      // console.log('cate is not null');
+      this.router.navigate(['/pages/sale', this.cate_id, this.cate_name], 
+      { queryParams: { page: this.page, sort: this.sort, product: this.product },
+       skipLocationChange: false });
+      // this.router.navigate(['/pages/sale',this.cate_id]);
+    }else{
+      // console.log('cate is null');
+      this.router.navigate(['/pages/sale'], 
+      { queryParams: { page: this.page, sort: this.sort, product: this.product }, skipLocationChange: false });
+    }
     this.get_all().then(res => {
-        this.check_page();
-        this.config = { currentPage: this.page ,itemsPerPage: this.per_page,totalItems:this.count, };
-        localStorage.removeItem('name');
+        this.config = { currentPage: this.page , itemsPerPage: this.per_page, totalItems: this.count };
     });
   }
 
-  check_page(){
-    console.log('page before',this.page);
-    (this.page == null)?this.page = 1:this.page = this.page;
-    console.log('page after',this.page);
+  check_param(){
+    // console.log('page before', this.page);
+    // console.log('sort before', this.sort);
+    (this.page == null) ? this.page = 1 : this.page = this.page;
+    (this.sort == null) ? this.sort = 3 : this.sort = this.sort;
+    // console.log('page after', this.page);
+    // console.log('sort after', this.sort);
   }
-  // get_all() {
-  //   this.product = localStorage.getItem('name');
-  //   this.sort = localStorage.getItem('filter');
-  //   this.page = localStorage.getItem('page');
-  //   this.data = {cate_id: this.cate_id, page: this.page, perpage:this.per_page, search: this.product, sort: this.sort };
-  //   this.http.post<any>('http://192.168.1.155:3000/product/search', this.data).subscribe(result => {
-  //     this.da = result.data;
-  //   });
-  // }
-  
+
   get_all() : any{
-    this.product = localStorage.getItem('name');
-    this.sort = localStorage.getItem('filter');
-  
     let promise = new Promise ((resolve,reject) => {
         this.data = {cate_id: this.cate_id, page: this.page, perpage:this.per_page, search: this.product, sort: this.sort };
         this.http.post<any>('http://192.168.1.155:3000/product/search', this.data)
@@ -138,19 +98,35 @@ export class SaleComponent implements OnInit , OnDestroy  {
     return promise;
   }
 
+  get_all_product(){
+    this.get_all().then( res =>{
+      localStorage.setItem('name', this.product);
+      // localStorage.setItem('filter', this.sort);
+      this.config.totalItems = this.count;
+      this.check_param();
+      this.get_all_cat();
+  });
+  }
 
   pageChange(newPage: number) {
     this.page = newPage;
     this.update();
     console.log('after cate_id',this.cate_id);
-    if(this.cate_id != null){
-      // console.log('cate is not null');
-      this.router.navigate(['/pages/sale',this.cate_id,this.cate_name], { queryParams: { page: newPage }, skipLocationChange: false });
-      // this.router.navigate(['/pages/sale',this.cate_id]);
-    }else{
-      // console.log('cate is null');
-      this.router.navigate(['/pages/sale'], { queryParams: { page: newPage }, skipLocationChange: false });
-    }
+  }
+
+  categoryChange(){
+    this.route.paramMap.subscribe(params => {
+      this.cate_id = [params.get('categoryId')][0];
+      this.cate_name = [params.get('categoryName')][0];
+      this.page = this.route.snapshot.queryParams['page'];
+      this.sort = this.route.snapshot.queryParams['sort'];
+      this.product = this.route.snapshot.queryParams['product'];
+      this.config.currentPage = this.page;
+      this.check_param();
+      this.get_all_product();
+      console.log('after cate_id',this.cate_id);
+
+    });
   }
   get_all_cat() {
     this.http.get<any>('http://192.168.1.155:3000/product/category').subscribe(result => {
@@ -158,5 +134,4 @@ export class SaleComponent implements OnInit , OnDestroy  {
       // console.log(result);
     });
   }
-  
 }
