@@ -123,6 +123,7 @@ export class SaleComponent implements OnInit , OnDestroy  {
       this.product = this.route.snapshot.queryParams['product'];
       this.config.currentPage = this.page;
       this.check_param();
+      
       this.get_all_product();
       console.log('after cate_id',this.cate_id);
 
