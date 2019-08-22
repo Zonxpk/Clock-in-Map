@@ -72,10 +72,7 @@ export class UserComponent implements OnInit {
   }
   
   get_all_user(){
-    var db = environment.db;
-    this.http.get<any>(`${db}/api/user/get_all_user`).subscribe(result => {
-      this.users = result;
-    });
+      this.users = this.http.get(`http://192.168.1.155:3000/product/category`);
   }
 
   get_name(){
