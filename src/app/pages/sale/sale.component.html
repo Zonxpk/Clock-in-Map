@@ -34,11 +34,11 @@
                       <ul class="menu">
                         <li class="menu-item"><a class="cs-text-link selected" class="cs-text-link selected" [routerLink]="['/pages/sale']">ทั้งหมด</a></li>
                         <li class="menu-item main-accordionIcon" *ngFor='let cate of cat'>
-                            <a class="cs-text-link" [routerLink]="['/pages/sale', cate.id,cate.name]" (click)="categoryChange()">{{cate.name}}</a>
+                            <a class="cs-text-link" [routerLink]="['/pages/sale', cate.id,cate.name]" >{{cate.name}}</a>
                             <ul class ="sub-menu" *ngFor='let sub of cate.childrens'> 
-                              <a class="cs-text-link" [routerLink]="['/pages/sale', sub.id,sub.name]" (click)="categoryChange()">- {{sub.name}} </a>
+                              <a class="cs-text-link" [routerLink]="['/pages/sale', sub.id,sub.name]" >- {{sub.name}} </a>
                               <ul class ="sub-menu" *ngFor='let sub2 of sub.childrens'>
-                                <a class="cs-text-link" [routerLink]="['/pages/sale', sub2.id,sub2.name]" (click)="categoryChange()">- {{sub2.name}} </a>
+                                <a class="cs-text-link" [routerLink]="['/pages/sale', sub2.id,sub2.name]" >- {{sub2.name}} </a>
                               </ul>
                             </ul>
                         </li>
