@@ -35,7 +35,6 @@ import {
     AppRoutingModule,
 
     ThemeModule.forRoot(),
-
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),

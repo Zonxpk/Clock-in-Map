@@ -3,6 +3,7 @@ import {CheckinComponent} from './checkin.component';
 import {FormsModule} from '@angular/forms';
 import {WebcamModule} from 'ngx-webcam';
 import { CommonModule } from '@angular/common'; 
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { 
   NbCardModule,
   NbListModule,
@@ -10,12 +11,15 @@ import {
   NbToggleModule,
   NbButtonModule,
   NbInputModule,
+  NbIconModule,
+  NbWindowService,
 } from '@nebular/theme';
 @NgModule({
   declarations: [
     CheckinComponent
   ],
   imports: [
+    NbEvaIconsModule,
     FormsModule,
     WebcamModule,
     CommonModule,
@@ -25,6 +29,8 @@ import {
     NbToggleModule,
     NbButtonModule,
     NbInputModule,
+    NbIconModule,
+    NbWindowService,
   ],
   providers: [],
   bootstrap: [CheckinComponent]
