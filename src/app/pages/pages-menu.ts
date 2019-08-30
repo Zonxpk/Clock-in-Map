@@ -40,7 +40,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Check In',
+<<<<<<< HEAD
     icon: 'camera-outline',
+=======
+    icon: 'shopping-cart-outline',
+>>>>>>> ce60ce6f577d916d308691b95029189391f2d9f1
     link: '/pages/checkin',
   },
 ];

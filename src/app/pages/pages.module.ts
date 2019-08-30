@@ -18,6 +18,11 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { UserModule } from './user/user.module';
 import { SaleModule } from './sale/sale.module';
 import { CheckinModule } from './checkin/checkin.module';
+<<<<<<< HEAD
+=======
+import { ExampleModule } from './example/example.module';
+import { ExampleNdModule } from './example-nd/example-nd.module';
+>>>>>>> ce60ce6f577d916d308691b95029189391f2d9f1
 import { PagesRoutingModule } from './pages-routing.module';
 import { WebcamModule } from 'ngx-webcam';
 
