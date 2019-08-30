@@ -34,18 +34,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'Shopping',
-    icon: 'shopping-cart-outline',
-    link: '/pages/example-nd',
-  },
-  {
-    title: 'User',
-    icon: 'shopping-cart-outline',
-    link: '/pages/user',
-  },
-  {
     title: 'Sale',
     icon: 'shopping-cart-outline',
     link: '/pages/sale',
+  },
+  {
+    title: 'Check In',
+    icon: 'shopping-cart-outline',
+    link: '/pages/checkin',
   },
 ];

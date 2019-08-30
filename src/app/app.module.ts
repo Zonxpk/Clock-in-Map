@@ -6,6 +6,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { WebcamModule } from 'ngx-webcam';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
@@ -27,6 +28,7 @@ import {
     [AppComponent],
 
   imports: [
+    WebcamModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
