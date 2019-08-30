@@ -3,10 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ExampleComponent } from './example/example.component';
-import { ExampleNdComponent } from './example-nd/example-nd.component';
 import { UserComponent } from './user/user.component';
 import { SaleComponent } from './sale/sale.component';
+import { CheckinComponent } from './checkin/checkin.component';
 
 const routes: Routes = [{
   path: '',
@@ -47,6 +46,15 @@ const routes: Routes = [{
     {
       path: 'sale/:categoryId/:categoryName',
       component: SaleComponent,
+    },
+    {
+      path: 'checkin',
+      component: CheckinComponent,
+    },
+    {
+      path: '',
+      redirectTo: 'checkin',
+      pathMatch: 'full',
     },
     // {
     //   path: 'example-nd',
