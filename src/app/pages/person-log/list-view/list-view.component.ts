@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { LocalDataSource } from 'ng2-smart-table';
-import { SmartTableData } from '../../@core/data/smart-table';
+import { SmartTableData } from '../../../@core/data/smart-table';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  selector: 'app-list-view',
+  templateUrl: './list-view.component.html',
+  styleUrls: ['./list-view.component.scss']
 })
-export class UserComponent implements OnInit {
+export class ListViewComponent implements OnInit {
   
   settings = {
     add: {

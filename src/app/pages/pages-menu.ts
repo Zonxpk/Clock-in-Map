@@ -1,16 +1,7 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
-  {
-    title: 'Dashboard',
-    icon: 'home-outline',
-    link: '/pages/dashboard',
-    home: true,
-  },
-  {
-    title: 'FEATURES',
-    group: true,
-  },
+  
   {
     title: 'Auth',
     icon: 'lock-outline',
@@ -34,13 +25,22 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'Sale',
-    icon: 'shopping-cart-outline',
-    link: '/pages/sale',
+    title: 'FEATURES',
+    group: true,
   },
   {
-    title: 'Check In',
-    icon: 'camera-outline',
-    link: '/pages/checkin',
+    title: 'example',
+    icon: 'shopping-cart-outline',
+    link: '/pages/example-nd',
+  },
+  {
+    title: 'User',
+    icon: 'shopping-cart-outline',
+    link: '/pages/user',
+  },
+  {
+    title: 'Person Log',
+    icon: 'person-outline',
+    link: '/pages/person-log',
   },
 ];

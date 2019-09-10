@@ -1,11 +1,11 @@
-var db = 'cus1260_user';
+var db = 'cus1260_test';
 
 module.exports = {
     client: 'mysql',
     connection: {
-        host: 'localhost',
-        user: 'root',
-        password: '',
+        host: '192.168.1.102',
+        user: 'cus1260_test',
+        password: 'ketshoptest',
         database: db,
         charset: 'utf8'
     },

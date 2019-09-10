@@ -1,18 +1,25 @@
 const express = require('express');
-const router = express.Router();
+const app = express.Router();
+const bodyParser = require('body-parser');
+const passport = require("passport");
 
+
+const auth = require('./auth');
 const user = require('./user');
+const check_in = require('./check-in');
 
-router.use('/user',user);
+app.use('/auth', auth);
+app.use('/user', passport.authenticate('jwt', {session: false}), user);
+app.use('/check_in', check_in);
 
 /* GET api listing. */
-router.get('/', (req, res) => {
+app.get('/', (req, res) => {
   res.send('api works');
 });
 
-router.get('/test', (req, res) => {
+app.get('/test', (req, res) => {
   res.send("test");
 });
 
 
-module.exports = router;
+module.exports = app;
