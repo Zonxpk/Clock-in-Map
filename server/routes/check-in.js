@@ -23,7 +23,7 @@ router.post('/log-by-person', function(req, res, next) {
   })().catch(err => console.log(err));
 });
 
-router.get('/sale-list', function(req, res, next) {
+router.get('/sale-list', function(res, next) {
   Promise.coroutine(function* () {
     const sale = yield User.query((qb)=>{
       qb.leftJoin('ums_role','ums_role.ro_id','=','us_role_id');
@@ -40,7 +40,6 @@ router.get('/sale-list', function(req, res, next) {
       )
       qb.where('ro_name','=','sale');
     }).fetchAll();
-    // const sale = yield User.fetchAll();
       if(sale){
         res.json(sale);
       }else{

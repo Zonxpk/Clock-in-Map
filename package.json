@@ -85,6 +85,7 @@
     "serve-favicon": "^2.5.0",
     "socicon": "3.0.5",
     "typeface-exo": "0.0.22",
+    "uniqid": "^5.0.3",
     "web-animations-js": "github:angular/web-animations-js#release_pr208",
     "zone.js": "~0.9.1"
   },
