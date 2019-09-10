@@ -30,7 +30,7 @@ import {
 
 
 const formSetting: any = {
-  redirectDelay: 0,
+  redirectDelay: 1.5,
   showMessages: {
     success: true,
   },
@@ -80,9 +80,10 @@ const formSetting: any = {
               endpoint: '/auth/sign-up',
               method: 'post',
               redirect: {
-                success: '/pages/',
+                // success: '/pages/',
                 failure: null, // stay on the same page
               },
+              defaultMessages: ['You have been successfully registered, Please log in.'],
             },
             logout: {
               endpoint: '/auth/sign-out',
@@ -111,7 +112,7 @@ const formSetting: any = {
            requestPassword: formSetting,
            resetPassword: formSetting,
            logout: {
-             redirectDelay: 0,
+             redirectDelay: 1,
            },
         },
     }),
