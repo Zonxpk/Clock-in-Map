@@ -1,4 +1,4 @@
-var knex = require('knex')(require('./db_user'));
+var knex = require('knex')(require('./db_config'));
 
 var Bookshelf = require('bookshelf')(knex);
 

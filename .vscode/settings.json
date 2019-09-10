@@ -1,4 +1,10 @@
 {
     "typescript.tsdk": "./node_modules/typescript/lib",
-    "tslint.enable": false
+    "tslint.enable": false,
+    "peacock.color": "#68217A",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#68217a",
+        "statusBarItem.hoverBackground": "#8a2ca2",
+        "statusBar.foreground": "#e7e7e7"
+    }
 }
