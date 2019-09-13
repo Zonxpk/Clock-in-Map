@@ -10,5 +10,5 @@
 
 export const environment = {
   production: false,
-  db: "http://localhost:3000"
+  apiEndPoint: "http://localhost:3000"
 };
