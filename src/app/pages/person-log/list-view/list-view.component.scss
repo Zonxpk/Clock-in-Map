@@ -1,0 +1,11 @@
+nb-select{
+    width: 22.5rem;
+}
+
+:host{
+    /deep/{
+        table{
+            margin-top: 0.7rem !important;
+        }
+    }
+}

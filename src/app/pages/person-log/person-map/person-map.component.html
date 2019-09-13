@@ -1,0 +1,21 @@
+<agm-map 
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  (mapClick)="mapClicked($event)">
+
+  <agm-marker 
+      *ngFor="let m of markers  ; let i = index"
+      (markerClick)="clickedMarker(m.label, i)"
+      [latitude]="m.location.lc_latitude"
+      [longitude]="m.location.lc_longitude"
+      [label]="m.ci_subject"
+      [markerDraggable]="m.draggable"
+      (dragEnd)="markerDragEnd(m, $event)">
+      
+    <agm-info-window>
+      <strong>InfoWindow content</strong>
+    </agm-info-window>
+    
+  </agm-marker>
+</agm-map>

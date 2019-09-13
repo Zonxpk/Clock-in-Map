@@ -1,2 +1,5 @@
-         <ng2-smart-table [settings]="settings" [source]="data" (deleteConfirm)="onDeleteConfirm($event)">
-        </ng2-smart-table>
+<nb-select placeholder="Select a person" [(ngModel)]="selectedId" (ngModelChange)="query_ci_log()">
+        <nb-option *ngFor="let sale of sale_list" [value]="sale.id">{{sale.prefix}} {{sale.fname}} {{sale.lname}}</nb-option>
+</nb-select>
+<ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+</ng2-smart-table>

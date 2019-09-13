@@ -46,7 +46,8 @@ router.post('/sign-up', (req, res) => {
     }
     else if(password == confirmPassword){
       const hashed = bcrypt.hashSync( password, securityConfig.saltRounds);
-      const gender = (prefix == 1)? 1 : 2 ;
+      var gender = 0;
+      (prefix == 1)? gender = 1 : gender = 2 ;
         User.forge(
           {
             'us_role_id':'2',
@@ -59,7 +60,10 @@ router.post('/sign-up', (req, res) => {
             'us_gender_id':gender,
             'us_since': new Date().toISOString()
           }).save()
-          .then(res.status(200).send({ message:'Register success. Please sign in.' }));
+          .then(result => {
+            console.log(result.attributes);
+            res.status(200).send({ message:'Register success. Please sign in.' })
+          });
     }else{
       res.status(400).send({ message:'Password is not match.' });
     }
