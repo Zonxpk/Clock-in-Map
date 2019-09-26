@@ -1,6 +1,6 @@
 const Bookshelf = require('../config/bookshelf.config');
 const Promise = require('bluebird');
-Bookshelf.plugin('registry')
+// Bookshelf.plugin('registry')
 const User = require('./user');
 const Location = require('./location');
 const CheckIn = Bookshelf.Model.extend({

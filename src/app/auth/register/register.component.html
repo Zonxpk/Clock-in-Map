@@ -20,7 +20,7 @@
     <label class="label" for="input-name">Name:</label>
     <div class="full-name-inputs">
       <div>
-        <nb-select placeholder="Prefix" size="large" [(ngModel)]="user.prefix" #prefix="ngModel" name="prefix">
+        <nb-select placeholder="Prefix" size="large" [(ngModel)]="user.prefix" #prefix="ngModel" name="prefix" value="1">
           <nb-option value="1">นาย</nb-option>
           <nb-option value="2">นาง</nb-option>
           <nb-option value="3">นางสาว</nb-option>
@@ -155,6 +155,8 @@
       Agree to <a href="#" target="_blank"><strong>Terms & Conditions</strong></a>
     </nb-checkbox>
   </div>
+
+  <!-- <input placeholder="Role" [(ngModel)]="user.role" #role="ngModel" name="role"> -->
 
   <button nbButton
           fullWidth

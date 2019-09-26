@@ -14,6 +14,7 @@ import {
   NbUserModule,
   NbToastrModule,
   NbSpinnerModule,
+  NbTreeGridModule,
 } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ThemeModule } from '../../@theme/theme.module';
@@ -22,11 +23,14 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { RouterModule } from '@angular/router';
-import { PersonLogComponent } from './person-log.component';
-import { PersonMapComponent } from './person-map/person-map.component';
-import { ListViewComponent } from './list-view/list-view.component';
+import { GroupLogComponent } from './group-log.component';
+import { GroupMapComponent } from './group-map/group-map.component';
+import { TreeGridComponent } from './tree-grid/tree-grid.component';
+import { TreeGridIconComponent } from './tree-grid/tree-grid-icon/tree-grid-icon.component';
+import { NbDateFnsDateModule } from '@nebular/date-fns';
+import { format } from 'date-fns';
+import * as th from 'date-fns/locale/th';
 import localeTh from '@angular/common/locales/th';
-import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 registerLocaleData(localeTh);
 
@@ -35,7 +39,7 @@ registerLocaleData(localeTh);
     Ng2SmartTableModule,
     CommonModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCpVhQiwAllg1RAFaxMWSpQruuGARy0Y1k',
+      apiKey: '',
     }),
     AgmJsMarkerClustererModule,
     ThemeModule,
@@ -51,21 +55,26 @@ registerLocaleData(localeTh);
     NbSelectModule,
     NbListModule,
     NbIconModule,
-    NbEvaIconsModule,
     NbToastrModule,
     NbSpinnerModule,
+    NbTreeGridModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    // PersonLogRoutingModule,
+    // NbDateFnsDateModule.forRoot({
+    //   parseOptions: { locale: th },
+    //   formatOptions: { locale: th },
+    // }),
+    // GroupLogRoutingModule,
   ],
   declarations: [
-    PersonLogComponent,
-    PersonMapComponent,
-    ListViewComponent,
+    GroupLogComponent,
+    GroupMapComponent,
+    TreeGridComponent,
+    TreeGridIconComponent,
   ],
   providers: [
    { provide: LOCALE_ID, useValue: 'th' },
   ]
 })
-export class PersonLogModule { }
+export class GroupLogModule { }

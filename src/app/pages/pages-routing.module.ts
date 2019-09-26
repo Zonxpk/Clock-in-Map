@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { UserComponent } from './user/user.component';
 import { PersonLogComponent } from './person-log/person-log.component';
+import { GroupLogComponent } from './group-log/group-log.component';
 
 const routes: Routes = [{
   path: '',
@@ -24,6 +25,10 @@ const routes: Routes = [{
     {
       path: 'person-log',
       component: PersonLogComponent,
+    },
+    {
+      path: 'group-log',
+      component: GroupLogComponent,
     },
     { path: '', redirectTo: 'person-log', pathMatch: 'full' },
     { path: '**', redirectTo: 'person-log' },

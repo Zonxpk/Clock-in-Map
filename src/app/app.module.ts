@@ -27,6 +27,8 @@ import {
   NbAuthJWTToken,
  } from '@nebular/auth';
  import { AuthGuard } from './auth-guard.service';
+ import { environment } from '../environments/environment';
+ const api = environment.apiEndPoint;
 
 
 const formSetting: any = {
@@ -65,7 +67,7 @@ const formSetting: any = {
             class: NbAuthJWTToken,
             key: 'token',
           },
-            baseEndpoint: 'http://localhost:3000/api',
+            baseEndpoint: api + '/api',
             login: {
               endpoint: '/auth/sign-in',
               method: 'post',
@@ -77,7 +79,7 @@ const formSetting: any = {
               defaultMessages: ['You have been successfully logged in.'],
             },
             register: {
-              endpoint: '/auth/sign-up',
+              endpoint: '/auth/admin-sign-up',
               method: 'post',
               redirect: {
                 // success: '/pages/',
