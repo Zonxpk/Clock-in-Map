@@ -1,5 +1,8 @@
-<nb-select placeholder="Select a person" [(ngModel)]="selectedId" (ngModelChange)="query_ci_log()">
+<!-- <div  (click)="toggleLoadingAnimation()" [nbSpinner]="loading" nbSpinnerStatus="info" nbSpinnerSize="large" nbSpinnerMessage="Loading..."> -->
+
+<nb-select placeholder="Select a person" [(ngModel)]="selectedId" (ngModelChange)="get_ci_log($event)">
         <nb-option *ngFor="let sale of sale_list" [value]="sale.id">{{sale.prefix}} {{sale.fname}} {{sale.lname}}</nb-option>
 </nb-select>
-<ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
-</ng2-smart-table>
+        <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+        </ng2-smart-table>
+<!-- </div> -->

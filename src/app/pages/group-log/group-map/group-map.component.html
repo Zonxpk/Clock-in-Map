@@ -1,0 +1,40 @@
+<div style="display:flex;margin-bottom: 1rem;">
+  <nb-select placeholder="Select a date" [(ngModel)]="selectedDate" (ngModelChange)="get_location($event)" 
+  style="min-width: 250px;max-width: 350px;" >
+    <nb-option 
+    *ngFor="let date of date_markers; let i = index" [value]="i">
+      {{date.subject}}
+    </nb-option>
+  </nb-select>
+
+  <!-- <button (click)="changeValue()" nbButton>Button</button> -->
+</div>
+<agm-map 
+  #AgmMap
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [fitBounds]="true"
+  >
+  <agm-marker-cluster  
+    *ngFor="let markers of date_markers; let i = index"
+    imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m"
+  >
+    <div *ngIf="selectedSubject == markers.subject">
+      <agm-marker 
+      (markerClick)="clickedMarker(m.label, i)"
+          *ngFor="let m of markers.logByDate; let i = index"
+          [latitude]="m.location.lc_latitude"
+          [longitude]="m.location.lc_longitude"
+          [label]="m.ci_subject"
+          [markerDraggable]="m.draggable"
+          [agmFitBounds] = "true"
+          (dragEnd)="markerDragEnd(m, $event)">
+          <agm-info-window>
+            <strong>InfoWindow content</strong>
+          </agm-info-window>
+        
+      </agm-marker>
+    </div>
+  </agm-marker-cluster>
+</agm-map>

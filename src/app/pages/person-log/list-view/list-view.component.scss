@@ -7,5 +7,15 @@ nb-select{
         table{
             margin-top: 0.7rem !important;
         }
+
+        i.nb-info {
+            -webkit-text-fill-color: black;
+            font-size: 22px;
+        }
+
+        i.nb-info:hover {
+            -webkit-text-fill-color: #3366ff;
+            font-size: 22px;
+        }
     }
 }

@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonLogComponent implements OnInit {
 
+  loading = false;
   constructor() { }
 
   ngOnInit() {

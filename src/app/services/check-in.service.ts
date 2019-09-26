@@ -16,7 +16,6 @@ export class CheckInService {
         this.CheckInLog$ = this.SetCheckInLog.asObservable();
     }
 
-    
     CheckInLog(data){
         console.log('get check in log',data);
         this.SetCheckInLog.next(data);
@@ -36,4 +35,16 @@ export class CheckInService {
           }).toPromise();
         // return this._http.post(`${this.api}/api/check_in/log-by-person`, {"us_id":"1"}).toPromise();
     }
+
+    getLogByDate(date){
+        // alert(JSON.stringify(obj));
+        const headers = new HttpHeaders()
+        .set('Content-Type', 'application/json');
+
+        return this._http.post(`${this.api}/api/check_in/log-by-date`, JSON.stringify(date), {
+            headers: headers,
+          }).toPromise();
+        // return this._http.post(`${this.api}/api/check_in/log-by-person`, {"us_id":"1"}).toPromise();
+    }
+
 }
