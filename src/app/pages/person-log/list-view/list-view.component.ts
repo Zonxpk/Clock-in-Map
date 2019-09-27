@@ -1,16 +1,19 @@
-import { ServerDataSource, LocalDataSource  } from 'ng2-smart-table';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { LocalDataSource  } from 'ng2-smart-table';
+import { Component, OnInit, Input, Output, EventEmitter, TemplateRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../../environments/environment';
-import { SmartTableData } from '../../../@core/data/smart-table';
 import { CheckInService } from '../../../services/check-in.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../../../environments/environment';
+import { NbWindowService } from '@nebular/theme';
+import * as moment from 'moment';
 
 interface IPaging {
-  page:number;
-  perPage:number;
+  page: number;
+  perPage: number;
 }
+
+
 
 @Component({
   selector: 'ngx-list-view',
@@ -23,34 +26,35 @@ interface IPaging {
 
 export class ListViewComponent implements OnInit {
 
+  selectedId = null;
+  data: any;
+  source: LocalDataSource;
+  users: any;
+  name: string;
+  api: string = environment.apiEndPoint;
+
   sale_list: any = [];
+  check_in_log: any = [];
   settings = {
+    mode: 'external',
     hideSubHeader: true, // Hide filter row
-    actions: false,
-    // actions: {
-    //   custom: [
-    //     {
-    //       name: 'Location',
-    //       title: '<i class="nb-pin"></i>',
-    //     },
-    //   ],
-    //   add: false,
-    //   edit: false,
-    //   delete: false,
-    // },
-    add: {
-      addButtonContent: '<i class="nb-info" style="fill:red"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    edit: {
-      editButtonContent: '<i class="nb-location"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-info"></i>',
-      confirmDelete: true,
+    // actions: false,
+    actions: {
+      width: '10%',
+      position: 'right',
+      custom: [
+        {
+          name: 'location',
+          title: '<i class="nb-location"></i>',
+        },
+        {
+          name: 'info',
+          title: '<i class="nb-info"></i>',
+        },
+      ],
+      add: false,
+      edit: false,
+      delete: false,
     },
     columns: {
       idx: {
@@ -63,48 +67,42 @@ export class ListViewComponent implements OnInit {
               return ret;
             }
         },
-      ci_date_create: {
+      ci_date: {
         title: 'Date',
-        type: 'date',
+        type: 'text',
         width: '21%' ,
-          valuePrepareFunction: (date) => {
-             let thai_date , temp_date = new Date(date);
-             thai_date = temp_date.setFullYear(temp_date.getFullYear() + 543);
-             return this.datePipe.transform(temp_date, 'd MMM yyyy HH:mm ') + 'น.';
-          },
         },
+      // ci_date_create: {
+      //   title: 'Date',
+      //   type: 'date',
+      //   width: '21%' ,
+      //     valuePrepareFunction: (date) => {
+      //        let thai_date , temp_date = new Date(date);
+      //        thai_date = temp_date.setFullYear(temp_date.getFullYear() + 543);
+      //        return this.datePipe.transform(temp_date, 'd MMM yyyy HH:mm ') + 'น.';
+      //     },
+      //   },
       ci_subject: {
         title: 'Subject',
         width: '17%' ,
       },
       ci_detail: {
         title: 'Detail',
-        width: '47%' ,
-      },
-      location: {
-        title: 'Location',
         type: 'html',
-        width: '10%' ,
-          valuePrepareFunction: (location) => {
-          const lat = location['lc_latitude'];
-          const long = location['lc_longitude'];
-          const url = 'https://www.google.com/maps?q=loc:' + lat + ',' + long;
-          return  '<div> <a href="' + url + '"><nb-icon icon="pin-outline"></nb-icon></a>' +
-          '<a href="' + url + '"><nb-icon icon="info-outline"></nb-icon></a> </div>';
-        },
+        width: '47%' ,
+        valuePrepareFunction: (data) => {
+          return '<p class="word-break">' + data + '</p>';
+       },
       },
     },
   };
 
-  selectedId = null;
-  data: any;
-  source: LocalDataSource;
-  users: any;
-  name: string;
   @Input() loading: boolean;
   @Output() loadingChange = new EventEmitter();
+  @ViewChild('contentTemplate', { static: false }) contentTemplate: TemplateRef<any>;
 
   constructor(
+    private windowService: NbWindowService,
     private http: HttpClient,
     private Service_CheckIn: CheckInService,
     protected activatedRoute: ActivatedRoute,
@@ -123,7 +121,6 @@ export class ListViewComponent implements OnInit {
     this.source = new LocalDataSource;
     const body = {'us_id': value.toString() };
     this.Service_CheckIn.getLogByPerson(body).then((res) => {
-
       this.source.load(<any>res);
       this.Service_CheckIn.CheckInLog(res); // send data to map component
 
@@ -143,5 +140,38 @@ export class ListViewComponent implements OnInit {
   toggleLoadingAnimation() {
     this.loading = true;
     setTimeout(() => this.loading = false, 3000);
+  }
+
+  onAction(event) {
+    console.log(event);
+    switch (event.action) {
+      case 'location' :
+        const location = event.data['location'];
+        const lat = location['lc_latitude'];
+        const long = location['lc_longitude'];
+        const url = 'https://www.google.com/maps?q=loc:' + lat + ',' + long;
+        window.open(url);
+        break;
+
+      case 'info' :
+        const ci_data = event.data;
+        // let ci_date = moment(ci_data.ci_date_create);
+        // ci_date.add(543, 'years');
+        // ci_date.locale('th');
+        console.log('ci data', ci_data);
+          this.windowService.open(
+            this.contentTemplate,
+            {
+              title: '',
+              context: {
+                subject: ci_data.ci_subject,
+                detail: ci_data.ci_detail,
+                date: ci_data.ci_date,
+                image: this.api + '/' + ci_data.ci_img_path,
+              }
+            },
+          );
+        break;
+    }
   }
 }

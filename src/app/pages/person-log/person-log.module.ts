@@ -14,6 +14,7 @@ import {
   NbUserModule,
   NbToastrModule,
   NbSpinnerModule,
+  NbWindowModule,
 } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ThemeModule } from '../../@theme/theme.module';
@@ -54,6 +55,7 @@ registerLocaleData(localeTh);
     NbEvaIconsModule,
     NbToastrModule,
     NbSpinnerModule,
+    NbWindowModule.forChild(),
     RouterModule,
     FormsModule,
     ReactiveFormsModule,

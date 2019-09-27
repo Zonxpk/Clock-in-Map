@@ -35,7 +35,15 @@ router.post('/log-by-person', function(req, res, next) {
     .query('orderBy', 'ci_date_create', 'desc')
     .fetchAll({withRelated : 'location',});
       if(check_in){
-        check_in.forEach(result => console.log(result.attributes));
+        check_in.forEach(result => {
+          console.log('before',result.get('ci_date_create'));
+          let ci_date = moment(result.get('ci_date_create'));
+          ci_date.add(543, 'years');
+          ci_date.locale('th');
+          result.set('ci_date',ci_date.format('DD-MMM-YYYY H:mm') + ' น.');
+          console.log('after',result.get('ci_date'));
+          // console.log(result.attributes)
+        });
         res.json(check_in);
       }else{
         res.status(400).send({message:'User not found.'});

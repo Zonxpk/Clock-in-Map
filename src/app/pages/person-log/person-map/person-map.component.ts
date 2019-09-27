@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CheckInService } from '../../../services/check-in.service';
+import { environment } from '../../../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'ngx-person-map',
@@ -8,6 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./person-map.component.scss']
 })
 export class PersonMapComponent implements OnInit  {
+  api: string = environment.apiEndPoint;
+
   lat = 1.8002;
   lng = 1.581;
   obj = {
@@ -38,7 +41,6 @@ export class PersonMapComponent implements OnInit  {
     // console.log('markers',this.markers);
     this.Service_CheckIn.CheckInLog$.subscribe((data) => {
       this.markers = data; // And he have data here too!
-      console.log('map marks', this.markers);
       },
     );
   }

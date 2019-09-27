@@ -3,6 +3,23 @@
 <nb-select placeholder="Select a person" [(ngModel)]="selectedId" (ngModelChange)="get_ci_log($event)">
         <nb-option *ngFor="let sale of sale_list" [value]="sale.id">{{sale.prefix}} {{sale.fname}} {{sale.lname}}</nb-option>
 </nb-select>
-        <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+        <ng2-smart-table [settings]="settings" [source]="source" (custom)="onAction($event)">
         </ng2-smart-table>
 <!-- </div> -->
+
+
+<ng-template #contentTemplate let-data>
+        <div class="row">
+                <div class="col-md-7">
+                        <img [src]="data.image" class="img-responsive">
+                </div>
+                <div class="col-md-5">
+                        <label class="label">Date</label>
+                        <p class="text-break">{{ data.date }}</p>
+                        <label class="label">Subject</label>
+                        <p class="text-break">{{ data.subject }}</p>
+                        <label class="label">Description</label>
+                        <p class="text-break">{{ data.detail }}</p>
+                </div>
+        </div>
+</ng-template>
