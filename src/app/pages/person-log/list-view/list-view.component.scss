@@ -2,20 +2,74 @@ nb-select{
     width: 22.5rem;
 }
 
+img{
+    width:100%;
+    height:auto;
+    border-radius:7px;
+}
+
+img.img-responsive {
+    max-height: 430px;
+    max-width: 500px;
+}
+
 :host{
     /deep/{
         table{
             margin-top: 0.7rem !important;
         }
-
+        
+        i.nb-location {
+            -webkit-text-fill-color: black;
+            font-size: 35px;
+        }
+        
         i.nb-info {
             -webkit-text-fill-color: black;
-            font-size: 22px;
+            font-size: 26px;
+            position: relative;
+            bottom: 4px;
         }
-
+        
         i.nb-info:hover {
             -webkit-text-fill-color: #3366ff;
-            font-size: 22px;
+            font-size: 26px;
         }
+        
+        i.nb-location:hover {
+            -webkit-text-fill-color: #3366ff;
+            font-size: 35px;
+        }
+
+        ng2-st-tbody-edit-delete {
+            display: flex !important;
+            height: 0 !important;
+        }
+        
+        ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom {
+            display: inline-block;
+            width: 50px;
+            text-align: center;
+            // font-size: 1.1em;
+        }
+
+        ng2-st-tbody-custom{
+            position: relative;
+            top: 10px;
+        }
+
+        .ng2-smart-actions {
+            padding: 0;
+            height: 0 !important;
+        }
+        
+        ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom:hover {
+            color: #5dcfe3;
+        }
+
+        .word-break{
+            word-break: break-all !important;
+        }
+
     }
 }

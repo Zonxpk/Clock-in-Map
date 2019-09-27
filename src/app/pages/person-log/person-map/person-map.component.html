@@ -16,7 +16,20 @@
         [agmFitBounds] = "true"
         (dragEnd)="markerDragEnd(m, $event)">
       <agm-info-window>
-        <strong>InfoWindow content</strong>
+        <div class="row">
+          <div class="col-md-7">
+            <img [src]="api + '/' + m.ci_img_path" class="img-responsive">
+          </div>
+          <div class="col-md-5">
+            <label class="label">Date</label>
+            <p class="text-break">{{ m.ci_date }}</p>
+            <label class="label">Subject</label>
+            <p class="text-break">{{ m.ci_subject }}</p>
+            <label class="label">Description</label>
+            <p class="text-break">{{ m.ci_detail }}</p>
+          </div>
+    </div>
+        <!-- <strong>InfoWindow content</strong> -->
       </agm-info-window>
       
     </agm-marker>
