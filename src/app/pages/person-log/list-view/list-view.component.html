@@ -20,6 +20,10 @@
                         <p class="text-break">{{ data.subject }}</p>
                         <label class="label">Description</label>
                         <p class="text-break">{{ data.detail }}</p>
+                        <label class="label">Google Map</label>
+                        <a (click)="openLocation(data.location)" style="cursor: pointer;">
+                        <p>Link <nb-icon icon="external-link-outline"></nb-icon></p>  
+                        </a>
                 </div>
         </div>
 </ng-template>

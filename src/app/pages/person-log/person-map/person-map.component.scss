@@ -6,16 +6,18 @@
     padding: 0;
   }
 
-  img{
-    width:100%;
-    height:auto;
-    border-radius:7px;
-    object-fit: cover;
-  }
+  // img{
+  //   width:100%;
+  //   height:auto;
+  //   border-radius:7px;
+  //   object-fit: cover;
+  // }
 
   img.img-responsive {
-      max-height: 230px;
-      max-width: 266px;
+      max-width: 100%;
+      height: auto;
+      border-radius:7px;
+      object-fit: cover;
   }
 
   ::ng-deep agm-map {

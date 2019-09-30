@@ -22,16 +22,35 @@
   >
     <div *ngIf="selectedSubject == markers.subject">
       <agm-marker 
-      (markerClick)="clickedMarker(m.label, i)"
           *ngFor="let m of markers.logByDate; let i = index"
           [latitude]="m.location.lc_latitude"
           [longitude]="m.location.lc_longitude"
-          [label]="m.ci_subject"
+          [label]="m.subject"
           [markerDraggable]="m.draggable"
           [agmFitBounds] = "true"
           (dragEnd)="markerDragEnd(m, $event)">
           <agm-info-window>
-            <strong>InfoWindow content</strong>
+              <div class="row">
+                  <div class="col-md-7">
+                    <img [src]="api + '/' + m.img" onError="this.src='./assets/images/no_image.jpeg';" class="img-responsive">
+                  </div>
+                  <div class="col-md-5">
+                    <label class="label">Name</label>
+                    <p class="text-break">{{ m.name }}</p>
+                    <label class="label">Date</label>
+                    <p class="text-break">{{ m.date }}</p>
+                    <label class="label">Subject</label>
+                    <p class="text-break">{{ m.subject }}</p>
+                    <label class="label">Description</label>
+                    <p class="text-break">{{ m.detail }}</p>
+                    <label class="label">Google Map</label>
+                    <a (click)="openLocation(m.location)" style="cursor: pointer;">
+                      <p>
+                        Link <nb-icon icon="external-link-outline"></nb-icon>
+                      </p>  
+                    </a>
+                  </div>
+              </div>
           </agm-info-window>
         
       </agm-marker>

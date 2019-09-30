@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CheckInService } from '../../../services/check-in.service';
+import { environment } from '../../../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -9,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./group-map.component.scss']
 })
 export class GroupMapComponent implements OnInit {
+  api: string = environment.apiEndPoint;
 
   selectedDate: number = 0;
   selectedSubject: any = null;
@@ -26,7 +28,6 @@ export class GroupMapComponent implements OnInit {
   ngOnInit() {
     this.Service_CheckIn.CheckInLog$.subscribe((data) => {
       this.date_markers = data; // And he have data here too!
-      console.log('map marks', this.date_markers);
       this.selectedDate = 0;
       this.get_location(0);
       },
@@ -37,15 +38,19 @@ export class GroupMapComponent implements OnInit {
   get_location(value) {
     if(this.date_markers.length != 0){
       this.selectedSubject = this.date_markers[value].subject;
-      console.log('selected date', this.selectedDate);
-      console.log('selected subject', this.selectedSubject);
     }else{
-      console.log('Location not found.');
     }
   }
 
   changeValue(){
     this.selectedDate = this.selectedDate + 1;
+  }
+
+  openLocation(location){
+    const lat = location['lc_latitude'];
+    const long = location['lc_longitude'];
+    const url = 'https://www.google.com/maps?q=loc:' + lat + ',' + long;
+    window.open(url);
   }
 
 }

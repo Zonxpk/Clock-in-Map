@@ -17,7 +17,6 @@ export class CheckInService {
     }
 
     CheckInLog(data){
-        console.log('get check in log',data);
         this.SetCheckInLog.next(data);
     }
 
