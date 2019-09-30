@@ -5,6 +5,18 @@
   nb-card-body {
     padding: 0;
   }
+  
+  img{
+    width:100%;
+    height:auto;
+    border-radius:7px;
+    object-fit: cover;
+  }
+
+  img.img-responsive {
+      max-height: 230px;
+      max-width: 266px;
+  }
 
   ::ng-deep agm-map {
     width: 100%;

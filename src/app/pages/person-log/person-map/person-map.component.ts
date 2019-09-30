@@ -38,7 +38,6 @@ export class PersonMapComponent implements OnInit  {
     //   }
     //   this.markers[i] = location;
     // }
-    // console.log('markers',this.markers);
     this.Service_CheckIn.CheckInLog$.subscribe((data) => {
       this.markers = data; // And he have data here too!
       },
@@ -65,6 +64,13 @@ export class PersonMapComponent implements OnInit  {
         'lc_latitude': y + y0,
         'lc_longitude': xp + x0
     };
-}
+  }
+
+  openLocation(location){
+    const lat = location['lc_latitude'];
+    const long = location['lc_longitude'];
+    const url = 'https://www.google.com/maps?q=loc:' + lat + ',' + long;
+    window.open(url);
+  }
 
 }

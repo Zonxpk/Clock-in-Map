@@ -96,9 +96,6 @@ export class TreeGridComponent implements OnInit {
         this.loadingChange.emit(this.loading);
       });
     }
-    // alert(JSON.stringify(value)) ;
-    console.log('date range', value);
-    console.log('date range', JSON.stringify(value));
   }
 
 

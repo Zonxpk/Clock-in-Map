@@ -143,14 +143,10 @@ export class ListViewComponent implements OnInit {
   }
 
   onAction(event) {
-    console.log(event);
+    const location = event.data['location'];
     switch (event.action) {
       case 'location' :
-        const location = event.data['location'];
-        const lat = location['lc_latitude'];
-        const long = location['lc_longitude'];
-        const url = 'https://www.google.com/maps?q=loc:' + lat + ',' + long;
-        window.open(url);
+        this.openLocation(location);
         break;
 
       case 'info' :
@@ -158,7 +154,6 @@ export class ListViewComponent implements OnInit {
         // let ci_date = moment(ci_data.ci_date_create);
         // ci_date.add(543, 'years');
         // ci_date.locale('th');
-        console.log('ci data', ci_data);
           this.windowService.open(
             this.contentTemplate,
             {
@@ -168,10 +163,18 @@ export class ListViewComponent implements OnInit {
                 detail: ci_data.ci_detail,
                 date: ci_data.ci_date,
                 image: this.api + '/' + ci_data.ci_img_path,
-              }
+                location: location,
+              },
             },
           );
         break;
     }
+  }
+
+  openLocation(location){
+    const lat = location['lc_latitude'];
+    const long = location['lc_longitude'];
+    const url = 'https://www.google.com/maps?q=loc:' + lat + ',' + long;
+    window.open(url);
   }
 }

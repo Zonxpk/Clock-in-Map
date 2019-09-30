@@ -7,7 +7,6 @@
   >
   <agm-marker-cluster  imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
     <agm-marker 
-        (markerClick)="clickedMarker(m.label, i)"
         *ngFor="let m of markers; let i = index"
         [latitude]="m.location.lc_latitude"
         [longitude]="m.location.lc_longitude"
@@ -18,7 +17,7 @@
       <agm-info-window>
         <div class="row">
           <div class="col-md-7">
-            <img [src]="api + '/' + m.ci_img_path" class="img-responsive">
+            <img [src]="api + '/' + m.ci_img_path"  onError="this.src='./assets/images/no_image.jpeg';" class="img-responsive">
           </div>
           <div class="col-md-5">
             <label class="label">Date</label>
@@ -27,8 +26,12 @@
             <p class="text-break">{{ m.ci_subject }}</p>
             <label class="label">Description</label>
             <p class="text-break">{{ m.ci_detail }}</p>
+            <label class="label">Google Map</label>
+            <a (click)="openLocation(m.location)" style="cursor: pointer;">
+              <p>Link <nb-icon icon="external-link-outline"></nb-icon> </p>  
+            </a>
           </div>
-    </div>
+        </div>
         <!-- <strong>InfoWindow content</strong> -->
       </agm-info-window>
       
