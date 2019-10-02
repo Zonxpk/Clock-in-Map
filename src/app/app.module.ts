@@ -6,7 +6,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
@@ -25,6 +25,8 @@ import {
   NbPasswordAuthStrategy,
   NbAuthModule,
   NbAuthJWTToken,
+  NbPasswordAuthStrategyOptions,
+  getDeepFromObject,
  } from '@nebular/auth';
  import { AuthGuard } from './auth-guard.service';
  import { environment } from '../environments/environment';
@@ -100,11 +102,18 @@ const formSetting: any = {
               method: 'post',
             },
             errors: {
+              key: 'message',
+              // getter: (module: string, res: HttpErrorResponse, options: NbPasswordAuthStrategyOptions) => getDeepFromObject(
+              //   res.error,
+              //   options.errors.key,
+              //   options[module].defaultErrors,
+              // ),
+
               // Override the getter of errors functions
-              // res: is the HttpResponse that you get from your backend 
-              getter: (module, res, options) => {
-                return res.error ? res.error.message : 'Login/Username combination is not correct, please try again.';
-              },
+              // res: is the HttpResponse that you get from your backend
+              // getter: (module, res, options) => {
+              //   return res.error ? res.error.message : options[module].defaultErrors;
+              // },
             },
         }),
       ],
