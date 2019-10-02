@@ -8,6 +8,7 @@ import { NbAlertModule, NbButtonModule, NbCheckboxModule, NbInputModule, NbIconM
 
 import { NgxLoginComponent } from './login/login.component'; // <---
 import { NgxRegisterComponent } from './register/register.component';
+import { AuthComponent } from './auth.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { NgxRegisterComponent } from './register/register.component';
   declarations: [
     NgxLoginComponent,
     NgxRegisterComponent,
+    AuthComponent,
   ],
 })
 export class NgxAuthModule {
