@@ -7,6 +7,7 @@ import { NbAuthModule } from '@nebular/auth';
 import { NbAlertModule, NbButtonModule, NbCheckboxModule, NbInputModule, NbIconModule, NbSelectModule  } from '@nebular/theme';
 
 import { NgxLoginComponent } from './login/login.component'; // <---
+import { NgxLogoutComponent } from './logout/logout.component'; // <---
 import { NgxRegisterComponent } from './register/register.component';
 import { AuthComponent } from './auth.component';
 
@@ -28,6 +29,7 @@ import { AuthComponent } from './auth.component';
   ],
   declarations: [
     NgxLoginComponent,
+    NgxLogoutComponent,
     NgxRegisterComponent,
     AuthComponent,
   ],

@@ -1,9 +1,0 @@
-<nb-list>
-  <nb-list-item *ngFor="let product of products; index as productId">
-    <nb-user [name]="product.name" [title]="product.description" [routerLink]="['../product-details', productId]">
-    </nb-user>
-    <!-- <a [title]="product.name + ' details'" [routerLink]="['../product-details', productId]">
-      {{ product.name }}
-    </a> -->
-  </nb-list-item>
-</nb-list>
