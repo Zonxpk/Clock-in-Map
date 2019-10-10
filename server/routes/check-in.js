@@ -57,7 +57,7 @@ router.post('/log-by-date', function(req, res, next) {
         this.leftJoin('ums_user','ums_user.us_id','=','ci_us_id');
         this.leftJoin('ums_role','ums_role.ro_id','=','us_role_id');
         this.select('*').from('pl_check_in').as('pl_check_in')
-        this.where('ro_name','=','user');
+        // this.where('ro_name','=','user');
       });
       qb.count('* as count');
       qb.whereBetween('ci_date_create', [start, end]);

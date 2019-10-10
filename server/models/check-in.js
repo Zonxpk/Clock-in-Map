@@ -57,8 +57,8 @@ const CheckIn = Bookshelf.Model.extend({
           'ci_img_path',
           'ci_date_create',
           'ci_status',
-        ).from('pl_check_in').as('pl_check_in')}
-      ).where('ro_name','=','user')
+        ).from('pl_check_in').as('pl_check_in')})
+      // .where('ro_name','=','user')
       .orderBy('ci_date_create','DESC');
     });
 

@@ -18,7 +18,8 @@
   >
   <agm-marker-cluster  
     *ngFor="let markers of date_markers; let i = index"
-    imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m"
+    imagePath="./assets/images/cluster-icon/m" 
+    minimumClusterSize="3"
   >
     <div *ngIf="selectedSubject == markers.subject">
       <agm-marker 
