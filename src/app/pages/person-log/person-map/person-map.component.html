@@ -5,7 +5,9 @@
   [zoom]="zoom"
   [fitBounds]="true"
   >
-  <agm-marker-cluster  imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+  <agm-marker-cluster  imagePath="./assets/images/cluster-icon/m" 
+  (clusterClick)="clusterClicked($event)"
+  minimumClusterSize="3">
     <agm-marker 
         *ngFor="let m of markers; let i = index"
         [latitude]="m.location.lc_latitude"

@@ -37,7 +37,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+  userMenu = [
+    { title: 'Profile' },
+    { title: 'Log out', link: '/auth/logout'},
+  ];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
@@ -75,6 +78,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
+
+      this.user['name'] = 'Admin';
+      // console.log('user',this.user);
   }
 
   ngOnDestroy() {

@@ -14,9 +14,6 @@ import {
 } from '@nebular/theme';
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { UserModule } from './user/user.module';
-import { ExampleNdModule } from './example-nd/example-nd.module';
 import { PersonLogModule } from './person-log/person-log.module';
 import { GroupLogModule } from './group-log/group-log.module';
 import { PagesRoutingModule } from './pages-routing.module';
@@ -36,8 +33,6 @@ import { PagesRoutingModule } from './pages-routing.module';
     NbUserModule,
     ThemeModule,
     NbMenuModule,
-    DashboardModule,
-    UserModule,
     PersonLogModule,
     GroupLogModule,
     PagesRoutingModule,

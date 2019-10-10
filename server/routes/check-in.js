@@ -39,7 +39,7 @@ router.post('/log-by-person', function(req, res, next) {
           let ci_date = moment(result.get('ci_date_create'));
           ci_date.add(543, 'years');
           ci_date.locale('th');
-          result.set('ci_date',ci_date.format('DD MMM-YYYY H:mm') + ' น.');
+          result.set('ci_date',ci_date.format('DD MMM YYYY H:mm') + ' น.');
         });
         res.json(check_in);
       }else{
@@ -52,31 +52,34 @@ router.post('/log-by-date', function(req, res, next) {
   console.log(req.body);
   Promise.coroutine(function* () {
     const check_in = yield CheckIn.query(function (qb){
-      qb.whereBetween('ci_date_create', [start, end]);
-      qb.select(Bookshelf.knex.raw("DATE_FORMAT(ci_date_create, '%d-%m-%Y') as subject")); // ci_date to subject for table header
+      qb.select(Bookshelf.knex.raw("DATE_FORMAT(ci_date_create, '%d-%m-%Y') as subject")) // ci_date to subject for tree-grid's table header
+      .from(function() {
+        this.leftJoin('ums_user','ums_user.us_id','=','ci_us_id');
+        this.leftJoin('ums_role','ums_role.ro_id','=','us_role_id');
+        this.select('*').from('pl_check_in').as('pl_check_in')
+        this.where('ro_name','=','user');
+      });
       qb.count('* as count');
+      qb.whereBetween('ci_date_create', [start, end]);
       qb.groupBy('subject');
       qb.orderBy('subject','DESC');
     })
     .fetchAll({withRelated : ['logByDate','logByDate.location']});
       if(check_in){
         check_in.forEach(result =>{
-           console.log(result.attributes)
-            result.set('expanded',false);
-            result.set('kind','dir');
-            let logByDate = result.related('logByDate');
-            logByDate.forEach(log =>{
-              // console.log(log.get('date'));
-              let ci_date = moment(log.get('date'));
-              ci_date.add(543, 'years');
-              ci_date.locale('th');
-              log.set('date',ci_date.format('DD MMM-YYYY H:mm') + ' น.');
-              console.log(log.get('date'));
-            });
+            result.set('expanded',false); //set parent tree for tree-grid
+            result.set('kind','dir'); //set icon for tree-grid
+            let logByDate = result.related('logByDate'); //store related object to check_in's object
+              logByDate.forEach(log =>{
+                let ci_date = moment(log.get('date')); //store date value to variable
+                ci_date.add(543, 'years'); //convert to buddhist year
+                ci_date.locale('th'); //set thai language
+                log.set('date',ci_date.format('DD MMM-YYYY H:mm') + ' น.'); //set date format
+              });
         });
-        res.json(check_in);
+        res.json(check_in); 
       }else{
-        res.status(400).send({message:'User not found.'});
+        res.status(400).send({message:'Date not found.'});
       }
   })().catch(err => console.log(err));
 });
@@ -97,8 +100,8 @@ router.get('/sale-list', function(req , res, next) {
         'gd_name as gender',
         Bookshelf.knex.raw('CONCAT(pf_name, \' \', us_fname, \' \', us_lname) as "name"')
       )
-      // qb.where('ro_name','=','root');
-      // qb.orWhere('ro_name','=','admin');
+      qb.where('ro_name','=','root');
+      qb.orWhere('ro_name','=','admin');
       qb.orWhere('ro_name','=','user');
     }).fetchAll();
       if(sale){
