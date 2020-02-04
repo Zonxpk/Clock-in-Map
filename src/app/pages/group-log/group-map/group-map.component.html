@@ -15,11 +15,12 @@
   [longitude]="lng"
   [zoom]="zoom"
   [fitBounds]="true"
+  class="text-stroke"
   >
   <agm-marker-cluster  
     *ngFor="let markers of date_markers; let i = index"
     imagePath="./assets/images/cluster-icon/m" 
-    minimumClusterSize="3"
+    minimumClusterSize="2"
   >
     <div *ngIf="selectedSubject == markers.subject">
       <agm-marker 
