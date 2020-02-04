@@ -1,0 +1,290 @@
+[33mcommit fc1afeb69b30ceecca30cf4fbbc23365fef35f79[m[33m ([m[1;36mHEAD -> [m[1;32mstarter-kit-4[m[33m, [m[1;31morigin/starter-kit-4[m[33m)[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Thu Oct 10 13:53:19 2019 +0700
+
+    - Improve cluster seperate with condition
+    - Adapt for person-map and group-map
+
+[33mcommit 75dbac0a9be23917deb3ff81ad9be8178c042219[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Thu Oct 10 10:30:35 2019 +0700
+
+    - Import cluster icon to local
+    - Change user detail in header to admin
+    - Fix logout function
+    - Remove unneccessery route and component
+    - Improve Google map's cluster
+
+[33mcommit 5ce813587b68b178510247d358ec1e27068bc025[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Wed Oct 2 10:14:26 2019 +0700
+
+    Deploy production version 0.9.1
+
+[33mcommit b7087cc0a6f1dbbc4839a2ccfe8fd73e14818b11[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Mon Sep 30 15:46:41 2019 +0700
+
+    Remove server.js (already using RESTful server.)
+
+[33mcommit 6fe081b4445ccf73462812a618e9b46570dda275[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Mon Sep 30 15:44:19 2019 +0700
+
+    Update group-person module and improve performance.
+    - Location detail windows.
+    - Image responsive.
+    - Image on error.
+
+[33mcommit efc42937f717e749c3d10d138ef8df147e6b6ace[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Fri Sep 27 17:30:14 2019 +0700
+
+    Update person log module
+
+[33mcommit 1199285d03d806bc5c72d64f740dd334e8c2cd14[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Thu Sep 26 17:39:17 2019 +0700
+
+    Addgroup log module
+
+[33mcommit 1da4dda9ca61a8c1118a599ceb4e651312f574e9[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Fri Sep 13 10:16:53 2019 +0700
+
+    Add person log module
+
+[33mcommit 1c45730574028b8e07433a54cb43852a86956173[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Tue Sep 10 15:34:28 2019 +0700
+
+    Add sign up
+
+[33mcommit dc0b013d5ee0b4f6cb656c765cf69d5ab98dd4b5[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Tue Sep 10 10:27:35 2019 +0700
+
+    Add Login and services
+
+[33mcommit 7720c1a4dd31ce6b9a511dbde0c01c83311d7889[m[33m ([m[1;32mstarter-kit-2[m[33m)[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Fri Aug 30 11:50:32 2019 +0700
+
+    add camera
+
+[33mcommit 243643da7c3592163ada50b77876c79dd8387f08[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Fri Aug 30 11:49:27 2019 +0700
+
+    add camera module
+
+[33mcommit 01b84e6eee330055f6e2f4baf27917afa6a64aa0[m
+Merge: 9e2373db 28626701
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Thu Aug 29 16:30:35 2019 +0700
+
+    add check in module
+
+[33mcommit 9e2373dba311d191c251252f84a0991c7059cfb6[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Thu Aug 22 12:41:41 2019 +0700
+
+    change model
+
+[33mcommit 2862670176822f26dc07ef09afebc1547aec5468[m[33m ([m[1;31morigin/starter-kit[m[33m)[m
+Author: prongrapee <pongrapeeq@gmail.com>
+Date:   Tue Aug 20 17:24:04 2019 +0700
+
+    success
+
+[33mcommit e26c7c6e2f7f12b5d277b8c6a81a60c5c9647b8f[m
+Author: prongrapee <pongrapeeq@gmail.com>
+Date:   Tue Aug 20 15:22:08 2019 +0700
+
+    fix onchange category
+
+[33mcommit 8177876eaac29a8e07bfc0338c409fcd47cd511d[m
+Merge: 0f7997a8 0f7cfd3d
+Author: prongrapee <pongrapeeq@gmail.com>
+Date:   Tue Aug 20 14:00:36 2019 +0700
+
+    Merge branch 'starter-kit-2' of https://github.com/Zonxgh/ngx-admin into starter-kit
+
+[33mcommit 0f7cfd3df45522ca4611d3f42e443c6e99a8043f[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Tue Aug 20 13:59:58 2019 +0700
+
+    fix query QueryParams
+
+[33mcommit 0f7997a8cdc56d73afcf57caf4ee1981800590bf[m
+Merge: b8d421d3 d1463cae
+Author: prongrapee <pongrapeeq@gmail.com>
+Date:   Tue Aug 20 12:09:18 2019 +0700
+
+    Merge branch 'starter-kit-2' of https://github.com/Zonxgh/ngx-admin into starter-kit
+
+[33mcommit b8d421d3157200df938e5def0c7cfe7f34b7db43[m
+Author: prongrapee <pongrapeeq@gmail.com>
+Date:   Tue Aug 20 12:09:11 2019 +0700
+
+    update input
+
+[33mcommit d1463caec3f3c4a5ce575a116e570a3f29698538[m
+Merge: 73333b46 c5c20444
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Tue Aug 20 12:06:35 2019 +0700
+
+    merge
+
+[33mcommit 73333b468d95f58dc4e65ed28ab88f806dd52776[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Tue Aug 20 11:57:40 2019 +0700
+
+    fix pagination func get_all
+
+[33mcommit c5c20444e250e88147ab6caf60fdc6c47ced85c1[m
+Author: prongrapee <pongrapeeq@gmail.com>
+Date:   Tue Aug 20 11:56:27 2019 +0700
+
+    update category
+
+[33mcommit 583e95855662b9919d02d28e58c6b556ce42d611[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Mon Aug 19 17:27:02 2019 +0700
+
+    fix bug
+
+[33mcommit a8f607584d0fc0e61438d1036dfa1549257dd841[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Mon Aug 19 16:47:12 2019 +0700
+
+    add category router
+
+[33mcommit 499be2eb1b6612a7d12f8a5d7344b02dadb29a5a[m
+Merge: 7a69eec0 f5227d8a
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Mon Aug 19 16:46:51 2019 +0700
+
+    add category router
+
+[33mcommit f5227d8a99251c302af0093b98f4e172f78ad3f9[m
+Merge: 03bae5cc 23f598e2
+Author: prongrapee <pongrapeeq@gmail.com>
+Date:   Mon Aug 19 14:20:21 2019 +0700
+
+    update
+
+[33mcommit 03bae5cc74872afa95250c1623b6d7e9e32ac25d[m
+Author: prongrapee <pongrapeeq@gmail.com>
+Date:   Mon Aug 19 14:06:56 2019 +0700
+
+    update get_all,search
+
+[33mcommit 7a69eec0307c47993a778d3707c6a5d7030110b7[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Mon Aug 19 13:42:05 2019 +0700
+
+    delete func get_test
+
+[33mcommit 23f598e24a1d664c67349bfc598d605d172f76b4[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Mon Aug 19 13:36:11 2019 +0700
+
+    add async await to func get_all
+
+[33mcommit 63624c9717c78636c66bf8bcbb36a3ddc55b6b60[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Mon Aug 19 10:38:56 2019 +0700
+
+    deleted page/sale
+
+[33mcommit b9631ce5a9ffc00b335c8168ff076d03df02af58[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Mon Aug 19 09:44:22 2019 +0700
+
+    Add ngx pagination
+
+[33mcommit d5592255db2d651afd2df9a2bc74f83e952e5bf6[m
+Author: prongrapee <pongrapeeq@gmail.com>
+Date:   Fri Aug 16 18:00:11 2019 +0700
+
+    #Q Add ngModel
+
+[33mcommit 93030fe50ec31ae6f0c9cb311733a12ac4224f12[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Fri Aug 16 16:25:00 2019 +0700
+
+    add sale module
+
+[33mcommit d20bbd7668c23fa2d79a38ef8e0555c16a636fd3[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Fri Aug 16 13:55:21 2019 +0700
+
+    add Sale HTML
+
+[33mcommit 2e75cfa203b825affb741cc259e193d876d8e16d[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Fri Aug 16 13:53:28 2019 +0700
+
+    add Sale Module
+
+[33mcommit 540b3c2f1cb066f0e6d3429a04866a6d59524fde[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Fri Aug 16 13:49:39 2019 +0700
+
+    add ng-smart-table
+
+[33mcommit d0fb0ee626e4f054be573d584a88bae4ce203082[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Thu Aug 15 13:48:24 2019 +0700
+
+    Node
+    -cors
+
+[33mcommit e5e3239c622f89c6880d1da85ec39baefb2d6aec[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Wed Aug 14 16:55:30 2019 +0700
+
+    Add Node
+    - Express
+    - Bookshelf
+
+[33mcommit a2204acb24f54c00c0d4118461c3edfec398ef68[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Tue Aug 13 14:34:32 2019 +0700
+
+    add node
+    - body-parser
+    - express-
+    - hammerjs
+
+[33mcommit c125ba211097ad2eda5a2bcea9ee581a54c753d6[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Tue Aug 13 11:38:05 2019 +0700
+
+    update
+    -toast
+    -path
+    -input
+
+[33mcommit a7cdc31b703a743b53ad89ce7f78985350f02cb6[m[33m ([m[1;32mketxam[m[33m)[m
+Author: Zonxgh <pakawat.zon@gmail.com>
+Date:   Sat Aug 10 01:50:49 2019 +0700
+
+    Ketxam Project
+
+[33mcommit 66b86fa915033466859b61b439b3358c1e26f291[m[33m ([m[1;31mupstream/starter-kit[m[33m)[m
+Author: Dmitry Nehaychik <4dmitr@gmail.com>
+Date:   Tue Feb 27 13:50:49 2018 +0300
+
+    build: starter-kit clean up
+
+[33mcommit 4ff3d938e49f5dc57f16146cc51176af9885bab5[m[33m ([m[1;33mtag: v4.0.1[m[33m)[m
+Author: Sergey Andrievskiy <yggg@users.noreply.github.com>
+Date:   Tue Jul 16 12:26:35 2019 +0300
+
+    release: 4.0.1 (#5460)
+
+[33mcommit a39e9ee858a556424eb21cd04729940ec8bf01be[m
+Author: Sergey Andrievskiy <yggg@users.noreply.github.com>
+Date:   Tue Jul 

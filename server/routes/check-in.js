@@ -52,17 +52,20 @@ router.post('/log-by-date', function(req, res, next) {
   console.log(req.body);
   Promise.coroutine(function* () {
     const check_in = yield CheckIn.query(function (qb){
-      qb.select(Bookshelf.knex.raw("DATE_FORMAT(ci_date_create, '%d-%m-%Y') as subject")) // ci_date to subject for tree-grid's table header
+      qb.select(
+        Bookshelf.knex.raw("DATE_FORMAT(ci_date_create, '%d-%m-%Y') as subject"),
+        'ci_date_create'
+        ) // ci_date to subject for tree-grid's table header
       .from(function() {
         this.leftJoin('ums_user','ums_user.us_id','=','ci_us_id');
         this.leftJoin('ums_role','ums_role.ro_id','=','us_role_id');
         this.select('*').from('pl_check_in').as('pl_check_in')
-        // this.where('ro_name','=','user');
+        this.where('ro_name','=','user');
       });
       qb.count('* as count');
       qb.whereBetween('ci_date_create', [start, end]);
       qb.groupBy('subject');
-      qb.orderBy('subject','DESC');
+      qb.orderBy('ci_date_create','DESC');
     })
     .fetchAll({withRelated : ['logByDate','logByDate.location']});
       if(check_in){
@@ -100,9 +103,9 @@ router.get('/sale-list', function(req , res, next) {
         'gd_name as gender',
         Bookshelf.knex.raw('CONCAT(pf_name, \' \', us_fname, \' \', us_lname) as "name"')
       )
-      qb.where('ro_name','=','root');
-      qb.orWhere('ro_name','=','admin');
-      qb.orWhere('ro_name','=','user');
+      qb.where('ro_name','=','user');
+      // qb.orWhere('ro_name','=','admin');
+      // qb.orWhere('ro_name','=','root');
     }).fetchAll();
       if(sale){
         // sale.forEach(obj => {

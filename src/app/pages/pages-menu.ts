@@ -8,8 +8,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/person-log',
   },
   {
-    title: 'Group Log',
+    title: 'Date Log',
     icon: 'people-outline',
-    link: '/pages/group-log',
+    link: '/pages/date-log',
   },
 ];

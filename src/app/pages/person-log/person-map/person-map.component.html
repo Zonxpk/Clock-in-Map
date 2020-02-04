@@ -4,9 +4,11 @@
   [longitude]="lng"
   [zoom]="zoom"
   [fitBounds]="true"
+  class="text-stroke"
   >
   <agm-marker-cluster  imagePath="./assets/images/cluster-icon/m" 
-  minimumClusterSize="3">
+  minimumClusterSize="2" 
+  >
     <agm-marker 
         *ngFor="let m of markers; let i = index"
         [latitude]="m.location.lc_latitude"

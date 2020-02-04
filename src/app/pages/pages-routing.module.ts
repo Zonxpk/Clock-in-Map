@@ -18,7 +18,7 @@ const routes: Routes = [{
       component: PersonLogComponent,
     },
     {
-      path: 'group-log',
+      path: 'date-log',
       component: GroupLogComponent,
     },
     { path: '', redirectTo: 'person-log', pathMatch: 'full' },
