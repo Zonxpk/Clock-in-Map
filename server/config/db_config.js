@@ -4,8 +4,8 @@ module.exports = {
     client: 'mysql',
     connection: {
         host: 'localhost',
-        user: 'admin',
-        password: 'ketshopweb21',
+        user: 'root',
+        password: '',
         database: db,
         charset: 'utf8',
         port: 3306,

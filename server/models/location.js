@@ -9,4 +9,5 @@ const Location = Bookshelf.Model.extend({
   }
 });
 
+// module.exports = Location; 
 module.exports = Bookshelf.model('Location',Location); 

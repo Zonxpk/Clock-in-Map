@@ -40,4 +40,5 @@ const User = Bookshelf.Model.extend({
   }
 });
 
+// module.exports = User;
 module.exports = Bookshelf.model('User',User);

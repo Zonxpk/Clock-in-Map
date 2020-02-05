@@ -66,4 +66,5 @@ const CheckIn = Bookshelf.Model.extend({
   }
 });
 
+// module.exports = CheckIn; 
 module.exports = Bookshelf.model('CheckIn',CheckIn); 

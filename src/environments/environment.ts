@@ -10,6 +10,6 @@
 
 export const environment = {
   production: false,
-  // apiEndPoint: "http://localhost:3000"
-  apiEndPoint: "http://58.82.170.115:3000"
+  apiEndPoint: "http://localhost:3000"
+  // apiEndPoint: "http://58.82.170.115:3000"
 };
